@@ -1,0 +1,15 @@
+name: ai-reddit-digest
+source:
+  type: reddit
+  subreddits: [MachineLearning, LocalLLaMA, artificial]
+  sort: top
+  time: day
+  limit: 30
+processors:
+  - { type: keyword_filter, include: [llm, model, agent, benchmark, paper, open-source] }
+  - { type: dedup }
+  - { type: summarize, max_sentences: 2 }
+sinks:
+  - { type: markdown, path: out/ai-reddit-digest.md, title: "AI Reddit Digest" }
+  # Uncomment to post to Slack/Discord (set AUTOFLOW_WEBHOOK_URL as a repo secret):
+  # - { type: webhook, url: "${AUTOFLOW_WEBHOOK_URL}", header: "*🤖 Today's AI Reddit reads*" }
