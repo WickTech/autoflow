@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Sample Feed</title>
+    <item>
+      <title>New open-source LLM beats benchmarks</title>
+      <link>https://example.com/llm-news</link>
+      <description>A new open-source large language model was released today. It reportedly outperforms several closed models on reasoning benchmarks while running on consumer hardware. Researchers say the weights and training recipe are fully public.</description>
+    </item>
+    <item>
+      <title>Local bakery wins award</title>
+      <link>https://example.com/bakery</link>
+      <description>A neighbourhood bakery won a regional award for its sourdough. The owner credits a 30-year-old starter culture for the distinctive flavour.</description>
+    </item>
+    <item>
+      <title>AI agents automate DevOps workflows</title>
+      <link>https://example.com/agents-devops</link>
+      <description>Engineering teams are increasingly using AI agents to automate routine DevOps tasks such as triaging alerts and drafting postmortems. Early adopters report meaningful time savings but stress the need for human review.</description>
+    </item>
+  </channel>
+</rss>

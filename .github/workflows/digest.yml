@@ -1,0 +1,37 @@
+# Scheduled automation: run the digest pipeline every weekday at 8am UTC,
+# commit the generated Markdown, and (optionally) post to a webhook.
+name: Daily Digest
+
+on:
+  schedule:
+    - cron: "0 8 * * 1-5" # 08:00 UTC, Mon–Fri
+  workflow_dispatch: {} # allow manual runs
+
+permissions:
+  contents: write
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -e ".[openai]"
+
+      - name: Run digest pipeline
+        env:
+          # Add these as repository secrets to enable real summaries + posting.
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          AUTOFLOW_WEBHOOK_URL: ${{ secrets.AUTOFLOW_WEBHOOK_URL }}
+        run: autoflow run examples/tech-digest.yaml
+
+      - name: Commit digest + dedup state
+        run: |
+          git config user.name "autoflow-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add out/ .autoflow_state.json
+          git diff --cached --quiet || git commit -m "chore: daily digest $(date -u +%F)"
+          git push

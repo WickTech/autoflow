@@ -1,0 +1,25 @@
+# Daily tech digest: pull Hacker News front page, keep AI-related stories,
+# drop anything seen before, summarize, and publish to Markdown + a webhook.
+name: tech-digest
+
+source:
+  type: rss
+  urls:
+    - https://hnrss.org/frontpage
+  limit: 30
+
+processors:
+  - type: keyword_filter
+    include: [ai, llm, agent, machine learning, model, openai, anthropic]
+  - type: dedup
+    state_path: .autoflow_state.json
+  - type: summarize
+    max_sentences: 2
+
+sinks:
+  - type: markdown
+    path: out/tech-digest.md
+    title: "AI Tech Digest"
+  - type: webhook
+    url: ${AUTOFLOW_WEBHOOK_URL}   # resolved from env at runtime
+    header: "*🤖 Today's AI reads*"

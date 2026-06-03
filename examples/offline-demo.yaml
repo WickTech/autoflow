@@ -1,0 +1,19 @@
+# Fully offline demo — reads a local RSS file, no network or API key needed.
+# Run: autoflow run examples/offline-demo.yaml
+name: offline-demo
+
+source:
+  type: rss
+  url: examples/sample-feed.xml
+
+processors:
+  - type: keyword_filter
+    include: [ai, llm, agent, model]
+  - type: summarize
+    max_sentences: 1
+
+sinks:
+  - type: console
+  - type: markdown
+    path: out/offline-demo.md
+    title: "Offline Demo Digest"
