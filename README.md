@@ -2,7 +2,7 @@
 
 > A **pluggable content-automation pipeline**. Pull from sources, transform with LLMs, push to sinks — all described in a tiny YAML file and runnable on a schedule via GitHub Actions.
 
-[![CI](https://github.com/yourname/autoflow/actions/workflows/ci.yml/badge.svg)](https://github.com/yourname/autoflow/actions/workflows/ci.yml)
+[![CI](https://github.com/WickTech/autoflow/actions/workflows/ci.yml/badge.svg)](https://github.com/WickTech/autoflow/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/Python-3.10%2B-3776ab?logo=python&logoColor=white)
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 
@@ -13,6 +13,18 @@ post it to Slack, and never repeat a story — without you writing glue code.
 > 🔌 **Runs offline.** No API key? autoflow uses a deterministic extractive
 > summarizer, so the whole pipeline (and CI) runs with zero secrets. Add
 > `OPENAI_API_KEY` for LLM-quality summaries.
+
+---
+
+## ✅ Current Status
+
+| | |
+|---|---|
+| **Tests** | 9/9 passing — pipeline, components, RSS parsing (all offline) |
+| **CI** | GitHub Actions: lint (ruff) → pytest → live pipeline run on every push |
+| **Scheduled digest** | `digest.yml` runs weekday mornings at 08:00 UTC, commits output, posts to webhook |
+| **Python** | 3.10 and 3.12 tested |
+| **Deployment** | `Dockerfile` ready; runs as a container or via `autoflow run` CLI |
 
 ---
 
@@ -57,7 +69,7 @@ autoflow/
 ## 🚀 Quick start
 
 ```bash
-git clone https://github.com/yourname/autoflow && cd autoflow
+git clone https://github.com/WickTech/autoflow && cd autoflow
 pip install -e ".[dev]"
 
 # Fully offline demo (reads a bundled sample feed)
@@ -123,6 +135,27 @@ ruff check .
 
 CI runs the suite on Python 3.10 & 3.12 and executes a real pipeline run on
 every push.
+
+---
+
+## 🗺️ Roadmap
+
+Features planned for future iterations:
+
+- [ ] **Web scraper source** — Playwright-based source for JS-rendered pages (Hacker News, Reddit, X/Twitter)
+- [ ] **Reddit source** — pull top posts from any subreddit via the JSON API
+- [ ] **Email sink (SMTP)** — send digests as HTML emails via configurable SMTP
+- [ ] **Telegram sink** — post to a Telegram channel via Bot API
+- [ ] **GitHub Issues sink** — open labelled issues for each item (useful for bug/PR digests)
+- [ ] **Pipeline DAG** — fanout/merge support so one source can feed multiple independent processor chains
+- [ ] **SQLite state backend** — replace JSON seen-state with SQLite for concurrent-safe dedup
+- [ ] **Retry + dead-letter queue** — exponential backoff on source fetch failures; failed items go to a DLQ file
+- [ ] **Error reporting webhook** — post pipeline failure summaries to a separate Slack channel
+- [ ] **Schedule builder** — interactive CLI wizard to generate `digest.yml` from prompts
+- [ ] **Notion source** — pull pages from a Notion database via the Notion API
+- [ ] **Content scoring** — rank items by LLM-judged relevance before filtering, not just keyword match
+
+---
 
 ## 📈 What this demonstrates
 
