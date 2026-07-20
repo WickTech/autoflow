@@ -3,9 +3,10 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 
 from ..models import Item
+from ..registry import ConfigSpec
 
 
-class Sink(ABC):
+class Sink(ConfigSpec, ABC):
     """Delivers the final items somewhere. Configured from YAML."""
 
     def __init__(self, **config) -> None:

@@ -1,8 +1,21 @@
 from pathlib import Path
 
+import pytest
+
+from autoflow.models import Item
 from autoflow.pipeline import PipelineConfig, run_pipeline
+from autoflow.registry import sink
+from autoflow.sinks.base import Sink
 
 SAMPLE = str(Path(__file__).parent.parent / "examples" / "sample-feed.xml")
+
+
+@sink("_boom")
+class _BoomSink(Sink):
+    """Test-only sink that always fails, to prove delivery failures are safe."""
+
+    def emit(self, items: list[Item]) -> None:
+        raise RuntimeError("delivery failed")
 
 
 def _cfg(tmp_path, **overrides):
@@ -43,7 +56,23 @@ def test_dedup_suppresses_second_run(tmp_path):
 
 def test_unknown_component_raises(tmp_path):
     cfg = _cfg(tmp_path, source={"type": "does-not-exist"})
-    import pytest
-
     with pytest.raises(KeyError):
         run_pipeline(cfg, verbose=False)
+
+
+def test_dedup_state_not_persisted_when_a_sink_fails(tmp_path):
+    """A failed delivery must not mark items as seen — the next run retries them."""
+    state = tmp_path / "state.json"
+    cfg = _cfg(
+        tmp_path,
+        processors=[{"type": "dedup", "state_path": str(state)}],
+        sinks=[{"type": "_boom"}],
+    )
+    with pytest.raises(RuntimeError):
+        run_pipeline(cfg, verbose=False)
+    assert not state.exists()
+
+    # Same items are still deliverable on the retry.
+    cfg.sinks = [{"type": "markdown", "path": str(tmp_path / "out.md")}]
+    assert run_pipeline(cfg, verbose=False).emitted == 3
+    assert state.exists()

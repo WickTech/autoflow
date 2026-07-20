@@ -9,6 +9,8 @@ from .base import Processor
 
 @processor("summarize")
 class SummarizeProcessor(Processor):
+    config_keys = ("max_sentences",)
+
     def process(self, items: list[Item]) -> list[Item]:
         max_sentences = int(self.config.get("max_sentences", 2))
         for item in items:

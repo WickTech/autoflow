@@ -10,11 +10,18 @@ on:
 permissions:
   contents: write
 
+# Never let two digest runs race on the same push.
+concurrency:
+  group: daily-digest
+  cancel-in-progress: false
+
 jobs:
   digest:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # needed for rebase before push
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -30,8 +37,42 @@ jobs:
 
       - name: Commit digest + dedup state
         run: |
+          set -euo pipefail
           git config user.name "autoflow-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add out/ .autoflow_state.json
-          git diff --cached --quiet || git commit -m "chore: daily digest $(date -u +%F)"
-          git push
+
+          # out/ and .autoflow_state.json are gitignored for local dev, so -f is
+          # required to persist them from CI. Skip paths the run did not produce.
+          for path in out .autoflow_state.json; do
+            if [ -e "$path" ]; then git add -f "$path"; fi
+          done
+
+          if git diff --cached --quiet; then
+            echo "No digest changes to commit."
+            exit 0
+          fi
+
+          git commit -m "chore: daily digest $(date -u +%F)"
+          git pull --rebase --autostash origin "$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"
+
+      # Silence is not success: if any step above failed, say so out loud.
+      # Optional — no secret configured means this step is a no-op.
+      - name: Report failure
+        if: failure()
+        env:
+          ERROR_WEBHOOK: ${{ secrets.AUTOFLOW_ERROR_WEBHOOK_URL }}
+        run: |
+          set -uo pipefail
+          if [ -z "${ERROR_WEBHOOK:-}" ]; then
+            echo "::warning::AUTOFLOW_ERROR_WEBHOOK_URL not set — failure not reported."
+            exit 0
+          fi
+          RUN_URL="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          TEXT=":rotating_light: *autoflow: Daily Digest failed*
+          repo: \`$GITHUB_REPOSITORY\` · branch: \`$GITHUB_REF_NAME\` · commit: \`${GITHUB_SHA:0:7}\`
+          <$RUN_URL|View the failing run>"
+          jq -nc --arg text "$TEXT" '{text: $text}' \
+            | curl -sS --max-time 20 -X POST -H 'Content-Type: application/json' \
+                   --data @- "$ERROR_WEBHOOK" \
+            || echo "::warning::error webhook post failed"

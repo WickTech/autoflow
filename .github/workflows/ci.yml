@@ -2,8 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, master]
   pull_request:
+  workflow_dispatch: {}
 
 jobs:
   test:
@@ -20,5 +21,28 @@ jobs:
       - run: pip install -e ".[dev]"
       - run: ruff check autoflow tests
       - run: pytest -q
+      - name: Validate example configs
+        run: autoflow validate examples/offline-demo.yaml examples/tech-digest.yaml
+
       - name: Run offline demo pipeline
         run: autoflow run examples/offline-demo.yaml
+
+      # Only shout about broken default branches — PR failures are already visible.
+      - name: Report failure
+        if: failure() && github.event_name == 'push'
+        env:
+          ERROR_WEBHOOK: ${{ secrets.AUTOFLOW_ERROR_WEBHOOK_URL }}
+        run: |
+          set -uo pipefail
+          if [ -z "${ERROR_WEBHOOK:-}" ]; then
+            echo "::warning::AUTOFLOW_ERROR_WEBHOOK_URL not set — failure not reported."
+            exit 0
+          fi
+          RUN_URL="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          TEXT=":rotating_light: *autoflow: CI failed on \`$GITHUB_REF_NAME\`*
+          python ${{ matrix.python-version }} · commit \`${GITHUB_SHA:0:7}\`
+          <$RUN_URL|View the failing run>"
+          jq -nc --arg text "$TEXT" '{text: $text}' \
+            | curl -sS --max-time 20 -X POST -H 'Content-Type: application/json' \
+                   --data @- "$ERROR_WEBHOOK" \
+            || echo "::warning::error webhook post failed"

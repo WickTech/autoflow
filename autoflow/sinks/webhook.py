@@ -16,6 +16,8 @@ from .base import Sink
 
 @sink("webhook")
 class WebhookSink(Sink):
+    config_keys = ("url", "header", "dry_run")
+
     def emit(self, items: list[Item]) -> None:
         url = self._resolve(self.config.get("url", "${AUTOFLOW_WEBHOOK_URL}"))
         if not url:

@@ -7,14 +7,12 @@ from __future__ import annotations
 
 from datetime import datetime, timezone
 
-import httpx
-
+from .. import net
 from ..models import Item
 from ..registry import source
 from .base import Source
 
 _BASE = "https://www.reddit.com"
-_HEADERS = {"User-Agent": "autoflow/0.1 (content pipeline; open-source)"}
 
 
 @source("reddit")
@@ -27,6 +25,8 @@ class RedditSource(Source):
       time: str               # hour | day | week | month | year | all (only for top)
       limit: int              # max items to return total (default: 25)
     """
+
+    config_keys = ("subreddit", "subreddits", "sort", "time", "limit", "timeout", "retries")
 
     def fetch(self) -> list[Item]:
         subs = self.config.get("subreddits") or []
@@ -53,7 +53,12 @@ class RedditSource(Source):
             params["t"] = time
 
         url = f"{_BASE}/r/{subreddit}/{sort}.json"
-        resp = httpx.get(url, params=params, headers=_HEADERS, timeout=15, follow_redirects=True)
+        resp = net.get(
+            url,
+            params=params,
+            timeout=float(self.config.get("timeout", 15.0)),
+            retries=int(self.config.get("retries", net.DEFAULT_RETRIES)),
+        )
         resp.raise_for_status()
 
         posts = resp.json().get("data", {}).get("children", [])
