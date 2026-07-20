@@ -80,6 +80,9 @@ autoflow plugins
 
 # Check a config without running it (typos, unknown plugins, unset ${ENV_VARS})
 autoflow validate examples/tech-digest.yaml
+
+# Machine-readable diagnostics (stderr); the digest itself stays on stdout
+autoflow run examples/offline-demo.yaml --log-format json
 ```
 
 A pipeline is just YAML:

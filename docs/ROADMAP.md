@@ -25,14 +25,15 @@ Only item 1 remains — everything else is in the working tree awaiting a test r
 
 ## Next — capability (2–4 weeks)
 
-| # | Item | Effort | Notes |
-|---|------|--------|-------|
-| 7 | **Playwright web-scraper source** | M | The single most impressive item on the backlog. Ships as an optional extra (`pip install autoflow[web]`) so the zero-dependency offline path is untouched. |
-| 8 | SQLite state backend | M | Fixes unbounded JSON growth + daily state commits. Ship with `autoflow migrate-state` (JSON → SQLite) and keep JSON as the default so YAML stays backward-compatible. |
-| 9 | SMTP email sink | S | Most-requested real-world delivery channel; stdlib `smtplib`, no new deps |
-| 10 | Telegram sink | S | Trivial once webhook sink is generalised for formats |
-| 11 | Structured logging (`logging` + `--log-format json`) | S | Prerequisite for anything observability-flavoured |
-| 12 | LLM timeout, retry, and per-run token budget | S | Prevents a hung job burning Actions minutes |
+| # | Item | Effort | Status |
+|---|------|--------|--------|
+| 11 | Structured logging (`logging` + `--log-format json`) | S | ✅ Done (`autoflow/log.py`) |
+| 12 | LLM timeout, retry, and per-run token budget | S | ✅ Done |
+| — | Webhook delivery retries (audit follow-on) | S | ✅ Done (`net.post`) |
+| 9 | SMTP email sink | S | ⬜ Next |
+| 10 | Telegram sink | S | ⬜ Next |
+| 7 | **Playwright web-scraper source** | M | ⬜ Biggest portfolio item; optional extra (`autoflow[web]`) so the offline path is untouched |
+| 8 | SQLite state backend | M | ⬜ Fixes unbounded JSON growth + daily state commits. Needs `autoflow migrate-state` and JSON as default for YAML compatibility |
 
 ---
 

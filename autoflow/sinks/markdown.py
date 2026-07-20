@@ -4,6 +4,7 @@ from __future__ import annotations
 from datetime import date
 from pathlib import Path
 
+from ..log import log
 from ..models import Item
 from ..registry import sink
 from .base import Sink
@@ -33,4 +34,7 @@ class MarkdownSink(Sink):
             lines.append("")
 
         path.write_text("\n".join(lines), encoding="utf-8")
-        print(f"autoflow: wrote {len(items)} item(s) → {path}")
+        log.info(
+            "wrote %d item(s) → %s", len(items), path,
+            extra={"sink": "markdown", "path": str(path), "items": len(items)},
+        )

@@ -13,19 +13,19 @@ def _response(status: int, **headers) -> httpx.Response:
     return httpx.Response(status, request=httpx.Request("GET", URL), headers=headers)
 
 
-def _sequence(monkeypatch, *results):
-    """Stub httpx.get to yield each result in turn; exceptions are raised."""
+def _sequence(monkeypatch, *results, method="get"):
+    """Stub httpx.get/post to yield each result in turn; exceptions are raised."""
     calls: list[dict] = []
     remaining = list(results)
 
-    def _fake_get(url, **kwargs):
+    def _fake(url, **kwargs):
         calls.append({"url": url, **kwargs})
         outcome = remaining.pop(0)
         if isinstance(outcome, Exception):
             raise outcome
         return outcome
 
-    monkeypatch.setattr(net.httpx, "get", _fake_get)
+    monkeypatch.setattr(net.httpx, method, _fake)
     return calls
 
 
@@ -89,3 +89,25 @@ def test_user_agent_is_sent_and_overridable(monkeypatch):
     assert calls[0]["headers"]["User-Agent"] == net.USER_AGENT
     net.get(URL, headers={"User-Agent": "custom/1.0"})
     assert calls[1]["headers"]["User-Agent"] == "custom/1.0"
+
+
+# --- POST: same policy, because delivery is as flaky as fetching ------------
+
+
+def test_post_sends_the_json_payload(monkeypatch):
+    calls = _sequence(monkeypatch, _response(200), method="post")
+    net.post(URL, json={"text": "hello"})
+    assert calls[0]["json"] == {"text": "hello"}
+    assert calls[0]["headers"]["User-Agent"] == net.USER_AGENT
+
+
+def test_post_retries_transient_failures(monkeypatch):
+    calls = _sequence(monkeypatch, _response(503), _response(200), method="post")
+    assert net.post(URL, json={}).status_code == 200
+    assert len(calls) == 2
+
+
+def test_post_does_not_retry_client_errors(monkeypatch):
+    calls = _sequence(monkeypatch, _response(400), method="post")
+    assert net.post(URL, json={}).status_code == 400
+    assert len(calls) == 1, "a malformed payload will not fix itself"

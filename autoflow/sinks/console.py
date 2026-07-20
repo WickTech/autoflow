@@ -7,6 +7,10 @@ from .base import Sink
 
 @sink("console")
 class ConsoleSink(Sink):
+    """Prints the digest itself, so this deliberately uses ``print`` (stdout)
+    rather than the logger (stderr) — ``autoflow run ... > digest.txt`` should
+    capture the digest, not the diagnostics."""
+
     def emit(self, items: list[Item]) -> None:
         if not items:
             print("autoflow: no new items.")
