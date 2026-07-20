@@ -3,9 +3,10 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 
 from ..models import Item
+from ..registry import ConfigSpec
 
 
-class Source(ABC):
+class Source(ConfigSpec, ABC):
     """Produces items. Configured from a dict in the pipeline YAML."""
 
     def __init__(self, **config) -> None:

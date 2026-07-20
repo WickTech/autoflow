@@ -1,7 +1,10 @@
+import json
+
 from autoflow.llm import _extractive_summary
 from autoflow.models import Item
 from autoflow.processors.dedup import DedupProcessor
 from autoflow.processors.keyword_filter import KeywordFilter
+from autoflow.state import SeenStore
 
 
 def test_extractive_summary_picks_salient_sentence():
@@ -38,3 +41,52 @@ def test_fingerprint_stable_for_same_url():
     a = Item(title="t1", url="http://x")
     b = Item(title="t2", url="http://x")
     assert a.fingerprint == b.fingerprint
+
+
+def test_keyword_filter_respects_word_boundaries():
+    """'ai' must not match 'chair', 'said', or 'Ukraine'."""
+    items = [
+        Item(title="Ergonomic chair review", url="a", content="the chair said hello"),
+        Item(title="Ukraine update", url="b", content="certain developments"),
+        Item(title="AI model shipped", url="c", content="a new model"),
+    ]
+    kept = KeywordFilter(include=["ai"]).process(items)
+    assert [i.title for i in kept] == ["AI model shipped"]
+
+
+def test_keyword_filter_substring_mode_is_opt_in():
+    items = [Item(title="Ergonomic chair", url="a", content="")]
+    assert KeywordFilter(include=["ai"]).process(items) == []
+    assert len(KeywordFilter(include=["ai"], substring=True).process(items)) == 1
+
+
+def test_keyword_filter_matches_multi_word_phrases():
+    items = [
+        Item(title="Machine   learning at scale", url="a", content=""),
+        Item(title="Learning machine embroidery", url="b", content=""),
+    ]
+    kept = KeywordFilter(include=["machine learning"]).process(items)
+    assert [i.title for i in kept] == ["Machine   learning at scale"]
+
+
+def test_seen_store_roundtrips_and_leaves_no_temp_files(tmp_path):
+    path = tmp_path / "state.json"
+    store = SeenStore(path)
+    store.add("abc")
+    store.add("def")
+    store.save()
+
+    assert json.loads(path.read_text(encoding="utf-8")) == ["abc", "def"]
+    assert "abc" in SeenStore(path)
+    # The atomic write must not leave scratch files behind.
+    assert [p.name for p in tmp_path.iterdir()] == ["state.json"]
+
+
+def test_seen_store_survives_a_corrupt_file(tmp_path):
+    path = tmp_path / "state.json"
+    path.write_text("{not json", encoding="utf-8")
+    store = SeenStore(path)
+    assert "anything" not in store
+    store.add("x")
+    store.save()
+    assert json.loads(path.read_text(encoding="utf-8")) == ["x"]

@@ -15,6 +15,18 @@ PROCESSORS: dict[str, type] = {}
 SINKS: dict[str, type] = {}
 
 
+class ConfigSpec:
+    """Optional declaration of the YAML keys a plugin understands.
+
+    Consumed by ``autoflow validate`` to catch typo'd or missing config before a
+    scheduled run. Leaving ``config_keys`` empty disables unknown-key checking,
+    so third-party plugins are never forced to opt in.
+    """
+
+    config_keys: tuple[str, ...] = ()
+    required_keys: tuple[str, ...] = ()
+
+
 def _register(table: dict[str, type], name: str) -> Callable[[type[T]], type[T]]:
     def deco(cls: type[T]) -> type[T]:
         if name in table:

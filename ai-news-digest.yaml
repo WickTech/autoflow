@@ -1,0 +1,26 @@
+name: ai-news-digest
+
+source:
+  type: rss
+  urls:
+    - https://hnrss.org/frontpage
+    - https://www.reddit.com/r/MachineLearning/.rss
+    - https://openai.com/blog/rss.xml
+  limit: 50
+
+processors:
+  - type: keyword_filter
+    include: [ai, llm, agent, gpt, claude, rag, fine-tune]
+    exclude: [hiring, sponsored]
+  - type: dedup
+  - type: summarize
+    max_sentences: 2
+
+sinks:
+  - type: markdown
+    path: out/ai-digest.md
+    title: "🤖 Daily AI Digest"
+  - type: webhook
+    url: ${AUTOFLOW_WEBHOOK_URL}
+    header: "*🤖 Today's AI reads*"
+  - type: console

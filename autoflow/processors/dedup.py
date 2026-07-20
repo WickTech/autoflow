@@ -9,6 +9,10 @@ from .base import Processor
 
 @processor("dedup")
 class DedupProcessor(Processor):
+    config_keys = ("state_path", "persist")
+
+    _pending: SeenStore | None = None
+
     def process(self, items: list[Item]) -> list[Item]:
         state_path = self.config.get("state_path", ".autoflow_state.json")
         store = SeenStore(state_path)
@@ -23,6 +27,12 @@ class DedupProcessor(Processor):
             batch_seen.add(fp)
             store.add(fp)
 
-        if self.config.get("persist", True):
-            store.save()
+        # Deferred: the runner calls commit() only after all sinks succeed, so a
+        # failed delivery does not permanently mark unsent items as seen.
+        self._pending = store if self.config.get("persist", True) else None
         return fresh
+
+    def commit(self) -> None:
+        if self._pending is not None:
+            self._pending.save()
+            self._pending = None

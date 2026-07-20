@@ -1,5 +1,4 @@
 """Tests for the Reddit source — mocked HTTP, no network required."""
-import json
 from unittest.mock import MagicMock, patch
 
 import pytest
@@ -28,7 +27,7 @@ SAMPLE_POST = {
 }
 
 
-@patch("autoflow.sources.reddit.httpx.get")
+@patch("autoflow.sources.reddit.net.get")
 def test_returns_items(mock_get):
     mock_get.return_value = _make_response([SAMPLE_POST])
     items = RedditSource(subreddits=["MachineLearning"]).fetch()
@@ -38,7 +37,7 @@ def test_returns_items(mock_get):
     assert items[0].metadata["score"] == 1234
 
 
-@patch("autoflow.sources.reddit.httpx.get")
+@patch("autoflow.sources.reddit.net.get")
 def test_limit_respected(mock_get):
     posts = [dict(SAMPLE_POST, title=f"Post {i}", url=f"https://x.com/{i}") for i in range(10)]
     mock_get.return_value = _make_response(posts)
@@ -46,7 +45,7 @@ def test_limit_respected(mock_get):
     assert len(items) == 3
 
 
-@patch("autoflow.sources.reddit.httpx.get")
+@patch("autoflow.sources.reddit.net.get")
 def test_skips_empty_self_posts(mock_get):
     empty_self = dict(SAMPLE_POST, is_self=True, selftext="")
     real_post = dict(SAMPLE_POST, title="Real post", url="https://x.com/real")
@@ -56,13 +55,13 @@ def test_skips_empty_self_posts(mock_get):
     assert items[0].title == "Real post"
 
 
-@patch("autoflow.sources.reddit.httpx.get")
+@patch("autoflow.sources.reddit.net.get")
 def test_multiple_subreddits(mock_get):
     mock_get.return_value = _make_response([SAMPLE_POST])
     items = RedditSource(subreddits=["python", "MachineLearning"], limit=4).fetch()
     # 2 subreddits × 1 post each = 2 items (under limit of 4)
     assert len(items) == 2
-    mock_get.call_count == 2
+    assert mock_get.call_count == 2
 
 
 def test_missing_subreddits_raises():

@@ -77,6 +77,9 @@ autoflow run examples/offline-demo.yaml
 
 # See everything that's registered
 autoflow plugins
+
+# Check a config without running it (typos, unknown plugins, unset ${ENV_VARS})
+autoflow validate examples/tech-digest.yaml
 ```
 
 A pipeline is just YAML:
@@ -88,6 +91,8 @@ source:
   urls: [https://hnrss.org/frontpage]
   limit: 30
 processors:
+  # Word-boundary matching: "ai" hits "AI model", not "chair".
+  # Add `substring: true` for loose matching.
   - { type: keyword_filter, include: [ai, llm, agent] }
   - { type: dedup }
   - { type: summarize, max_sentences: 2 }

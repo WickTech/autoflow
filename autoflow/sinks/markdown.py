@@ -11,6 +11,8 @@ from .base import Sink
 
 @sink("markdown")
 class MarkdownSink(Sink):
+    config_keys = ("path", "title")
+
     def emit(self, items: list[Item]) -> None:
         path = Path(self.config.get("path", "out/digest.md"))
         path.parent.mkdir(parents=True, exist_ok=True)
