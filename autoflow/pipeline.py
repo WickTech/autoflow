@@ -12,9 +12,11 @@ from dataclasses import dataclass, field
 import yaml
 
 # Importing these packages registers all built-in plugins.
+from . import llm
 from . import processors as _processors  # noqa: F401
 from . import sinks as _sinks  # noqa: F401
 from . import sources as _sources  # noqa: F401
+from .log import log
 from .models import Item
 from .registry import PROCESSORS, SINKS, SOURCES
 
@@ -125,11 +127,18 @@ class RunResult:
 
 
 def run_pipeline(config: PipelineConfig, *, verbose: bool = True) -> RunResult:
+    llm.reset_budget()  # token budget is per run, not per process
+
     source = _build(SOURCES, config.source)
     items = source.fetch()
     fetched = len(items)
     if verbose:
-        print(f"[{config.name}] fetched {fetched} item(s)")
+        log.info(
+            "[%s] fetched %d item(s)",
+            config.name,
+            fetched,
+            extra={"pipeline": config.name, "stage": "source", "count": fetched},
+        )
 
     built: list = []
     for spec in config.processors:
@@ -138,7 +147,19 @@ def run_pipeline(config: PipelineConfig, *, verbose: bool = True) -> RunResult:
         before = len(items)
         items = proc.process(items)
         if verbose:
-            print(f"[{config.name}] {spec['type']}: {before} → {len(items)}")
+            log.info(
+                "[%s] %s: %d → %d",
+                config.name,
+                spec["type"],
+                before,
+                len(items),
+                extra={
+                    "pipeline": config.name,
+                    "stage": spec["type"],
+                    "before": before,
+                    "after": len(items),
+                },
+            )
 
     for spec in config.sinks:
         _build(SINKS, spec).emit(items)
@@ -147,5 +168,13 @@ def run_pipeline(config: PipelineConfig, *, verbose: bool = True) -> RunResult:
     # effects (dedup state) so a sink failure is retried on the next run.
     for proc in built:
         proc.commit()
+
+    if verbose and llm.tokens_used():
+        log.info(
+            "[%s] LLM tokens used: %d",
+            config.name,
+            llm.tokens_used(),
+            extra={"pipeline": config.name, "tokens": llm.tokens_used()},
+        )
 
     return RunResult(fetched=fetched, emitted=len(items), items=items)

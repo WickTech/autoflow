@@ -9,10 +9,18 @@ from autoflow import net
 _OFFLINE_ENV = (
     "OPENAI_API_KEY",
     "OPENAI_BASE_URL",
+    "OPENAI_MODEL",
     # Without these a developer with a real webhook exported would have the
     # test suite post to their live Slack channel.
     "AUTOFLOW_WEBHOOK_URL",
     "AUTOFLOW_ERROR_WEBHOOK_URL",
+    # Ambient tuning must not change assertions about defaults.
+    "AUTOFLOW_LLM_TIMEOUT",
+    "AUTOFLOW_LLM_RETRIES",
+    "AUTOFLOW_LLM_MAX_TOKENS",
+    "AUTOFLOW_LLM_TOKEN_BUDGET",
+    "AUTOFLOW_LOG_LEVEL",
+    "AUTOFLOW_LOG_FORMAT",
 )
 
 

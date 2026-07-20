@@ -90,24 +90,37 @@ the old behaviour. Existing YAML keeps working unchanged.
 
 **12. Webhook sink is Slack-only despite the docstring.** It emits Slack mrkdwn
 links (`<url|title>`); Discord and Teams render that literally. Either detect the
-URL host or add a `format:` key.
+URL host or add a `format:` key. **Still open.**
+
+**12b. Webhook delivery had no retries.** *(fixed)* The sink called `httpx.post`
+directly, bypassing the retry layer — so sources retried transient failures but
+delivery did not. That got worse once dedup state was deferred until sinks
+succeed: one 503 deferred a whole digest. Now goes through `net.post`, with
+`retries:` / `timeout:` config keys.
 
 **13. Unsafe XML parsing.** *(fixed)* `RssSource._parse` ran `ET.fromstring` on
 remote input, exposing it to entity-expansion ("billion laughs") DoS. Now uses
 `defusedxml.ElementTree` (added to `dependencies`) with a stdlib fallback so
 existing installs don't break.
 
-**14. No LLM timeout or cost ceiling.** `llm.summarize` calls OpenAI with no
-`timeout=`, no retry, and no per-run token budget. A hung call blocks the job
-until the 6-hour Actions limit.
+**14. No LLM timeout or cost ceiling.** *(fixed)* `llm.summarize` called OpenAI
+with no `timeout=`, no retry, and no token budget — a hung call would block the
+job until the 6-hour Actions limit. Now bounded by `AUTOFLOW_LLM_TIMEOUT`,
+`AUTOFLOW_LLM_RETRIES`, `AUTOFLOW_LLM_MAX_TOKENS`, and a per-run
+`AUTOFLOW_LLM_TOKEN_BUDGET`. Any failure — timeout, rate limit, budget exhausted,
+empty response — degrades to the extractive summarizer instead of failing the
+run, and token usage is logged at the end of each run.
 
 **15. Test isolation gap.** *(fixed)* `conftest.py` unset `OPENAI_API_KEY` /
 `OPENAI_BASE_URL` but **not** `AUTOFLOW_WEBHOOK_URL`, so a developer with that
 exported would have had the suite post to a live Slack channel. Both webhook vars
 are now unset by the autouse fixture, and retry backoff never really sleeps.
 
-**16. `print()` everywhere, no structured logging.** No log levels, no way to
-route diagnostics separately from digest output, hard to grep in Actions logs.
+**16. `print()` everywhere, no structured logging.** *(fixed)* `autoflow/log.py`
+adds levels and a JSON formatter (`--log-level`, `--log-format json`, or the
+`AUTOFLOW_LOG_*` env vars). Diagnostics go to **stderr**; the console sink keeps
+`print` on **stdout** deliberately, so `autoflow run ... > digest.txt` still
+captures the digest rather than the log noise.
 
 ---
 

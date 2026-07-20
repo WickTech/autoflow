@@ -7,8 +7,8 @@ from __future__ import annotations
 
 import os
 
-import httpx
-
+from .. import net
+from ..log import log
 from ..models import Item
 from ..registry import sink
 from .base import Sink
@@ -16,12 +16,12 @@ from .base import Sink
 
 @sink("webhook")
 class WebhookSink(Sink):
-    config_keys = ("url", "header", "dry_run")
+    config_keys = ("url", "header", "dry_run", "timeout", "retries")
 
     def emit(self, items: list[Item]) -> None:
         url = self._resolve(self.config.get("url", "${AUTOFLOW_WEBHOOK_URL}"))
         if not url:
-            print("autoflow: webhook sink skipped (no URL configured).")
+            log.warning("webhook sink skipped (no URL configured)")
             return
         if not items:
             return
@@ -34,12 +34,17 @@ class WebhookSink(Sink):
             lines.append(bullet)
 
         if self.config.get("dry_run"):
-            print("autoflow (dry-run webhook):\n" + "\n".join(lines))
+            log.info("dry-run webhook payload:\n%s", "\n".join(lines))
             return
 
-        resp = httpx.post(url, json={"text": "\n".join(lines)}, timeout=20)
+        resp = net.post(
+            url,
+            json={"text": "\n".join(lines)},
+            timeout=float(self.config.get("timeout", net.DEFAULT_TIMEOUT)),
+            retries=int(self.config.get("retries", net.DEFAULT_RETRIES)),
+        )
         resp.raise_for_status()
-        print(f"autoflow: posted {len(items)} item(s) to webhook.")
+        log.info("posted %d item(s) to webhook", len(items), extra={"items": len(items)})
 
     @staticmethod
     def _resolve(value: str) -> str:

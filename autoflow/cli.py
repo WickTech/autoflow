@@ -14,6 +14,7 @@ for _stream in (sys.stdout, sys.stderr):
 
 # Imported after the reconfigure() above so plugin import side effects can't
 # print before stdout is UTF-8. E402 is deliberate here.
+from .log import configure as configure_logging  # noqa: E402
 from .pipeline import PipelineConfig, run_pipeline, validate_config  # noqa: E402
 from .registry import PROCESSORS, SINKS, SOURCES  # noqa: E402
 
@@ -24,8 +25,11 @@ app = typer.Typer(help="autoflow — pluggable content automation (sources → p
 def run(
     config: str = typer.Argument(..., help="Path to a pipeline YAML file."),
     quiet: bool = typer.Option(False, "--quiet", "-q"),
+    log_level: str = typer.Option("INFO", "--log-level", help="DEBUG, INFO, WARNING, ERROR."),
+    log_format: str = typer.Option("text", "--log-format", help="text or json."),
 ) -> None:
     """Run a pipeline defined in a YAML config."""
+    configure_logging(level="WARNING" if quiet else log_level, fmt=log_format)
     cfg = PipelineConfig.from_yaml(config)
     result = run_pipeline(cfg, verbose=not quiet)
     if not quiet:
