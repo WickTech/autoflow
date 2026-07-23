@@ -1,0 +1,49 @@
+# One pipeline, four delivery channels — the point of the sink plugin model.
+# Every sink skips itself with a warning when its credentials are unset, so this
+# file runs as-is with zero secrets (you just get the console output).
+#
+#   autoflow validate examples/multi-channel.yaml
+#   autoflow run examples/multi-channel.yaml
+name: multi-channel
+
+source:
+  type: rss
+  urls:
+    - https://hnrss.org/frontpage
+  limit: 30
+  retries: 3 # transient 5xx no longer costs a run
+
+processors:
+  - type: keyword_filter
+    include: [ai, llm, agent, machine learning, model]
+  - type: dedup
+    state_path: .autoflow_state.json
+  - type: summarize
+    max_sentences: 2
+
+sinks:
+  - type: console
+
+  - type: markdown
+    path: out/multi-channel.md
+    title: "AI Digest"
+
+  # Slack keeps the historical <url|title> dialect; Discord/Teams need markdown.
+  - type: webhook
+    url: ${AUTOFLOW_WEBHOOK_URL}
+    header: "*🤖 Today's AI reads*"
+    format: slack
+
+  - type: telegram
+    token: ${TELEGRAM_BOT_TOKEN}
+    chat_id: ${TELEGRAM_CHAT_ID}
+    header: "<b>Today's AI reads</b>"
+    format: html
+
+  - type: email
+    to: [${SMTP_USERNAME}]
+    subject: "AI Digest"
+    host: ${SMTP_HOST}
+    port: 587
+    username: ${SMTP_USERNAME}
+    password: ${SMTP_PASSWORD}

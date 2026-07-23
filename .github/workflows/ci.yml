@@ -22,7 +22,7 @@ jobs:
       - run: ruff check autoflow tests
       - run: pytest -q
       - name: Validate example configs
-        run: autoflow validate examples/offline-demo.yaml examples/tech-digest.yaml
+        run: autoflow validate examples/*.yaml
 
       - name: Run offline demo pipeline
         run: autoflow run examples/offline-demo.yaml

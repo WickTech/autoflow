@@ -30,8 +30,9 @@ Only item 1 remains — everything else is in the working tree awaiting a test r
 | 11 | Structured logging (`logging` + `--log-format json`) | S | ✅ Done (`autoflow/log.py`) |
 | 12 | LLM timeout, retry, and per-run token budget | S | ✅ Done |
 | — | Webhook delivery retries (audit follow-on) | S | ✅ Done (`net.post`) |
-| 9 | SMTP email sink | S | ⬜ Next |
-| 10 | Telegram sink | S | ⬜ Next |
+| 9 | SMTP email sink | S | ✅ Done (`sinks/email.py`, stdlib only) |
+| 10 | Telegram sink | S | ✅ Done (`sinks/telegram.py`, with 4096-char chunking) |
+| — | Webhook `format:` key (audit #12) | S | ✅ Done — Discord/Teams no longer get Slack mrkdwn |
 | 7 | **Playwright web-scraper source** | M | ⬜ Biggest portfolio item; optional extra (`autoflow[web]`) so the offline path is untouched |
 | 8 | SQLite state backend | M | ⬜ Fixes unbounded JSON growth + daily state commits. Needs `autoflow migrate-state` and JSON as default for YAML compatibility |
 

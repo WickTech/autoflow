@@ -21,6 +21,12 @@ _OFFLINE_ENV = (
     "AUTOFLOW_LLM_TOKEN_BUDGET",
     "AUTOFLOW_LOG_LEVEL",
     "AUTOFLOW_LOG_FORMAT",
+    # Delivery credentials: a stray export must never reach a real inbox or chat.
+    "TELEGRAM_BOT_TOKEN",
+    "TELEGRAM_CHAT_ID",
+    "SMTP_HOST",
+    "SMTP_USERNAME",
+    "SMTP_PASSWORD",
 )
 
 

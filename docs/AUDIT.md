@@ -88,9 +88,11 @@ config, so digest quality suffered visibly. Now word-boundary regex with phrase
 support ("machine learning" matches across whitespace); `substring: true` restores
 the old behaviour. Existing YAML keeps working unchanged.
 
-**12. Webhook sink is Slack-only despite the docstring.** It emits Slack mrkdwn
-links (`<url|title>`); Discord and Teams render that literally. Either detect the
-URL host or add a `format:` key. **Still open.**
+**12. Webhook sink is Slack-only despite the docstring.** *(fixed)* It emitted
+Slack mrkdwn links (`<url|title>`), which Discord and Teams render literally.
+There is now a `format:` key — `slack` (default, so existing configs are
+unchanged), `markdown`, `html`, `plain` — backed by a shared `render.py` that
+the Telegram and email sinks reuse.
 
 **12b. Webhook delivery had no retries.** *(fixed)* The sink called `httpx.post`
 directly, bypassing the retry layer — so sources retried transient failures but

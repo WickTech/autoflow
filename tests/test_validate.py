@@ -71,8 +71,11 @@ def test_reddit_requires_subreddits_only_at_runtime():
     assert validate_config(_cfg(source={"type": "reddit", "subreddits": ["python"]})) == []
 
 
-def test_shipped_examples_are_valid(monkeypatch):
-    monkeypatch.setenv("AUTOFLOW_WEBHOOK_URL", "https://example.com/hook")
-    for path in ("offline-demo.yaml", "tech-digest.yaml"):
-        issues = validate_config(PipelineConfig.from_yaml(str(EXAMPLES / path)))
-        assert [i for i in issues if i.level == "error"] == [], f"{path}: {issues}"
+def test_shipped_examples_are_valid():
+    """Every example must at least be error-free — CI runs the same check."""
+    paths = sorted(EXAMPLES.glob("*.yaml"))
+    assert paths, "no example configs found"
+    for path in paths:
+        issues = validate_config(PipelineConfig.from_yaml(str(path)))
+        errors = [i for i in issues if i.level == "error"]
+        assert errors == [], f"{path.name}: {errors}"

@@ -6,13 +6,12 @@ Everything is referenced by registry name, so the YAML fully describes the run.
 from __future__ import annotations
 
 import os
-import re
 from dataclasses import dataclass, field
 
 import yaml
 
 # Importing these packages registers all built-in plugins.
-from . import llm
+from . import env, llm
 from . import processors as _processors  # noqa: F401
 from . import sinks as _sinks  # noqa: F401
 from . import sources as _sources  # noqa: F401
@@ -45,9 +44,6 @@ def _build(table: dict, spec: dict):
     if kind not in table:
         raise KeyError(f"unknown component '{kind}'. Available: {sorted(table)}")
     return table[kind](**spec)
-
-
-_ENV_REF = re.compile(r"^\$\{([A-Za-z_][A-Za-z0-9_]*)\}$")
 
 
 @dataclass
@@ -91,10 +87,9 @@ def _check_spec(table: dict, spec: dict, where: str, kind_label: str) -> list[Is
 
     # ${VAR} references are resolved at runtime — warn early if unset.
     for key, value in spec.items():
-        if isinstance(value, str):
-            match = _ENV_REF.match(value.strip())
-            if match and not os.getenv(match.group(1)):
-                var = match.group(1)
+        for candidate in value if isinstance(value, list) else [value]:
+            var = env.ref_name(candidate)
+            if var and not os.getenv(var):
                 issues.append(Issue("warning", where, f"'{key}' references ${var}, which is unset"))
 
     return issues

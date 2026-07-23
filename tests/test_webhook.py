@@ -70,6 +70,21 @@ def test_env_reference_is_resolved(monkeypatch):
     assert calls[0]["url"] == URL
 
 
+def test_default_format_is_slack_for_backward_compatibility(monkeypatch):
+    calls = _stub_post(monkeypatch, _ok())
+    WebhookSink(url=URL).emit(ITEMS)
+    assert "<https://x.test/1|AI model shipped>" in calls[0]["json"]["text"]
+
+
+def test_markdown_format_for_discord_and_teams(monkeypatch):
+    """Slack's <url|title> renders literally elsewhere — hence the format key."""
+    calls = _stub_post(monkeypatch, _ok())
+    WebhookSink(url=URL, format="markdown").emit(ITEMS)
+    text = calls[0]["json"]["text"]
+    assert "[AI model shipped](https://x.test/1)" in text
+    assert "|" not in text
+
+
 def test_no_items_means_no_post(monkeypatch):
     calls = _stub_post(monkeypatch, _ok())
     WebhookSink(url=URL).emit([])

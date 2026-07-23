@@ -59,9 +59,13 @@ autoflow/
 ├── pipeline.py      builds + runs a pipeline from config
 ├── llm.py           summarizer (LLM + offline extractive fallback)
 ├── state.py         persistent seen-set for dedup
-├── sources/         rss.py
+├── net.py           shared HTTP layer: timeouts, retries, backoff
+├── log.py           structured logging (text or JSON, to stderr)
+├── env.py           ${ENV_VAR} resolution for configs
+├── render.py        item → slack / markdown / html / plain
+├── sources/         rss.py · reddit.py
 ├── processors/      keyword_filter.py · dedup.py · summarize.py
-└── sinks/           console.py · markdown.py · webhook.py
+└── sinks/           console.py · markdown.py · webhook.py · telegram.py · email.py
 ```
 
 ---
@@ -101,8 +105,15 @@ processors:
   - { type: summarize, max_sentences: 2 }
 sinks:
   - { type: markdown, path: out/tech-digest.md, title: "AI Tech Digest" }
+  # format: slack (default) · markdown for Discord/Teams · html · plain
   - { type: webhook, url: ${AUTOFLOW_WEBHOOK_URL}, header: "*🤖 Today's AI reads*" }
+  - { type: telegram, token: ${TELEGRAM_BOT_TOKEN}, chat_id: ${TELEGRAM_CHAT_ID} }
+  - { type: email, to: [me@example.com], host: ${SMTP_HOST} }
 ```
+
+Every sink skips itself with a warning when its credentials are unset, so
+[`examples/multi-channel.yaml`](examples/multi-channel.yaml) runs with zero
+secrets — see it fan out to all five channels as you add them.
 
 ```bash
 autoflow run examples/tech-digest.yaml
