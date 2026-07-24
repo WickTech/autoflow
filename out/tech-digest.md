@@ -1,57 +1,45 @@
-# AI Tech Digest — 2026-07-23
+# AI Tech Digest — 2026-07-24
 
-## [Show HN: Cactus Hybrid: We taught Gemma 4 to know when it's wrong](https://github.com/cactus-compute/cactus-hybrid)
+## [Flux 3 X Mimic: The Next Generation of Video-Action Models](https://bfl.ai/blog/flux-3-mimic)
 
-<p>Hey HN, Henry & Roman here from Cactus.<p>A small, on-device model is fast and private, but sometimes wrong, but frontier models are getting expensive pretty fast. Please let us know your thoughts, it helps us find ways to improve the design progressively.<p>Thanks a million!</p>
+<p>Article URL: <a href="https://bfl.ai/blog/flux-3-mimic">https://bfl.ai/blog/flux-3-mimic</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49033127">https://news.ycombinator.com/item?id=49033127</a></p>
+<p>Points: 7</p>
+<p># Comments: 0</p>
+
+<sub>source: https://hnrss.org/frontpage</sub>
+
+## [Flux 3](https://bfl.ai/blog/flux-3)
+
+<p>Article URL: <a href="https://bfl.ai/blog/flux-3">https://bfl.ai/blog/flux-3</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49031796">https://news.ycombinator.com/item?id=49031796</a></p>
+<p>Points: 248</p>
+<p># Comments: 60</p>
+
+<sub>source: https://hnrss.org/frontpage</sub>
+
+## [Show HN: Echo – Fable-level results at 1/3 the cost using open-weight models](https://news.ycombinator.com/item?id=49026810)
+
+<p>I’ve been building Echo (<a href="https://echo.tracerml.ai/" rel="nofollow">https://echo.tracerml.ai/</a>), an experiment in making one AI system out of a pool of open-weight models rather than choosing a single model and using it for every task.<p>It started with a simple experiment. Especially if you hit any weird failure cases or places where the allocation looks unintuitive.</p>
 <hr>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49010782">https://news.ycombinator.com/item?id=49010782</a></p>
-<p>Points: 137</p>
-<p># Comments: 25</p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49026810">https://news.ycombinator.com/item?id=49026810</a></p>
+<p>Points: 384</p>
+<p># Comments: 181</p>
 
 <sub>source: https://hnrss.org/frontpage</sub>
 
-## [GigaToken: ~1000x faster Language model tokenization](https://github.com/marcelroed/gigatoken/)
+## [Launch HN: Screenpipe (YC S26) – Record how you work and turn that into agents](https://news.ycombinator.com/item?id=49024620)
 
-<p>Article URL: <a href="https://github.com/marcelroed/gigatoken/">https://github.com/marcelroed/gigatoken/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49010167">https://news.ycombinator.com/item?id=49010167</a></p>
-<p>Points: 507</p>
-<p># Comments: 104</p>
+But I do! All the code is source-available at <a href="https://github.com/screenpipe/screenpipe" rel="nofollow">https://github.com/screenpipe/screenpipe</a>.
 
 <sub>source: https://hnrss.org/frontpage</sub>
 
-## [Are AI labs pelicanmaxxing?](https://dylancastillo.co/posts/pelicanmaxxing.html)
+## [Startup founders urge U.S. government not to shut off Chinese open weight AI](https://www.politico.com/news/2026/07/22/startup-founders-urge-trump-not-to-shut-off-chinese-open-weight-ai-01008992)
 
-<p>Article URL: <a href="https://dylancastillo.co/posts/pelicanmaxxing.html">https://dylancastillo.co/posts/pelicanmaxxing.html</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49010129">https://news.ycombinator.com/item?id=49010129</a></p>
-<p>Points: 535</p>
-<p># Comments: 208</p>
-
-<sub>source: https://hnrss.org/frontpage</sub>
-
-## [Making](https://beej.us/blog/data/ai-making/)
-
-<p>Article URL: <a href="https://beej.us/blog/data/ai-making/">https://beej.us/blog/data/ai-making/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49008440">https://news.ycombinator.com/item?id=49008440</a></p>
-<p>Points: 361</p>
-<p># Comments: 142</p>
-
-<sub>source: https://hnrss.org/frontpage</sub>
-
-## [Quality non-fiction books are the antithesis of AI slop](https://resobscura.substack.com/p/quality-non-fiction-books-are-the)
-
-<p><a href="https://book-prize-index.vercel.app/" rel="nofollow">https://book-prize-index.vercel.app/</a></p>
+<p><a href="https://littletech.org/" rel="nofollow">https://littletech.org/</a><p><a href="https://static.politico.com/4a/bf/9c4021d8404386b0a311dcccf0e5/lta-open-weight-ai-letter-7-22-26.pdf" rel="nofollow">https://static.politico.com/4a/bf/9c4021d8404386b0a311dcccf0...</a></p>
 <hr>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49007247">https://news.ycombinator.com/item?id=49007247</a></p>
-<p>Points: 364</p>
-<p># Comments: 120</p>
-
-<sub>source: https://hnrss.org/frontpage</sub>
-
-## [Businesses with ugly AI menu redesigns](https://blog.fiddery.com/businesses-with-ugly-ai-menu-redesigns/)
-
-<p>Article URL: <a href="https://blog.fiddery.com/businesses-with-ugly-ai-menu-redesigns/">https://blog.fiddery.com/businesses-with-ugly-ai-menu-redesigns/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49005973">https://news.ycombinator.com/item?id=49005973</a></p>
-<p>Points: 296</p>
-<p># Comments: 200</p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49023016">https://news.ycombinator.com/item?id=49023016</a></p>
+<p>Points: 936</p>
+<p># Comments: 773</p>
 
 <sub>source: https://hnrss.org/frontpage</sub>
