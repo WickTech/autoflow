@@ -1,58 +1,57 @@
-# AI Tech Digest — 2026-07-30
+# AI Tech Digest — 2026-07-31
 
-## [LLM Honeypot](https://llm2human.pages.dev/)
+## [DeepSeek V4 Flash 0731 Intelligence, Performance and Price Analysis](https://artificialanalysis.ai/models/deepseek-v4-flash-ga)
 
-<p>Article URL: <a href="https://llm2human.pages.dev/">https://llm2human.pages.dev/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49104117">https://news.ycombinator.com/item?id=49104117</a></p>
-<p>Points: 255</p>
-<p># Comments: 66</p>
-
-<sub>source: https://hnrss.org/frontpage</sub>
-
-## [AI's top startups are barely publishing their research](https://www.science.org/content/article/ai-s-top-startups-are-barely-publishing-their-research)
-
-<p>Article URL: <a href="https://www.science.org/content/article/ai-s-top-startups-are-barely-publishing-their-research">https://www.science.org/content/article/ai-s-top-startups-are-barely-publishing-their-research</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49103285">https://news.ycombinator.com/item?id=49103285</a></p>
-<p>Points: 469</p>
-<p># Comments: 244</p>
+<p>Article URL: <a href="https://artificialanalysis.ai/models/deepseek-v4-flash-ga">https://artificialanalysis.ai/models/deepseek-v4-flash-ga</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49120299">https://news.ycombinator.com/item?id=49120299</a></p>
+<p>Points: 14</p>
+<p># Comments: 4</p>
 
 <sub>source: https://hnrss.org/frontpage</sub>
 
-## [Show HN: CheapFoodMap – A map of good meals under $10](https://cheapfoodmap.com/)
+## [Google fixed more Chrome bugs in June than over the past two years, thanks to AI](https://blog.google/security/chrome-stronger-with-every-update/)
 
-How to encourage people to update prices, since inflation is making food price very frequent.<p>https://cheapfoodmap.com<p>Any and all suggestion will be super helpful. Thank you!</p>
+<p>Article URL: <a href="https://blog.google/security/chrome-stronger-with-every-update/">https://blog.google/security/chrome-stronger-with-every-update/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49120097">https://news.ycombinator.com/item?id=49120097</a></p>
+<p>Points: 72</p>
+<p># Comments: 79</p>
+
+<sub>source: https://hnrss.org/frontpage</sub>
+
+## [Show HN: What should the GUI for AI agents look like?](https://marbleos.com/demo)
+
+<p>Hi HN! Does Marble feel like a genuinely novel interface?</p>
 <hr>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49100043">https://news.ycombinator.com/item?id=49100043</a></p>
-<p>Points: 213</p>
-<p># Comments: 194</p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49119274">https://news.ycombinator.com/item?id=49119274</a></p>
+<p>Points: 55</p>
+<p># Comments: 37</p>
 
 <sub>source: https://hnrss.org/frontpage</sub>
 
-## [Some thoughts about Anthropic's new cryptanalysis results](https://blog.cryptographyengineering.com/2026/07/29/some-notes-about-anthropics-new-results/)
+## [The AI Aesthetic](https://blog.jim-nielsen.com/2026/ai-aesthetic/)
 
-<p>Article URL: <a href="https://blog.cryptographyengineering.com/2026/07/29/some-notes-about-anthropics-new-results/">https://blog.cryptographyengineering.com/2026/07/29/some-notes-about-anthropics-new-results/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49099804">https://news.ycombinator.com/item?id=49099804</a></p>
-<p>Points: 156</p>
-<p># Comments: 85</p>
+<p>Article URL: <a href="https://blog.jim-nielsen.com/2026/ai-aesthetic/">https://blog.jim-nielsen.com/2026/ai-aesthetic/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49117099">https://news.ycombinator.com/item?id=49117099</a></p>
+<p>Points: 307</p>
+<p># Comments: 133</p>
 
 <sub>source: https://hnrss.org/frontpage</sub>
 
-## [Launch HN: Tokenless (YC S26) – Automatic model switching to save money](https://usetokenless.com/)
+## [I flagged two research papers for fake authors and both were accepted as orals](https://geospatialml.com/posts/reviewing-ai-slop/)
 
-<p>Hi HN, Rohit here from Tokenless (<a href="https://usetokenless.com/" rel="nofollow">https://usetokenless.com/</a>), which I’m building alongside co-founders Andrew and Kev. Here’s a demo on how to use it: <a href="https://youtu.be/sjZWriclcls" rel="nofollow">https://youtu.be/sjZWriclcls</a><p>Tokenless provides frontier-level intelligence for cheaper, so we’d love some feedback on how it feels to use, any corner cases that the router routes incorrectly, and whether you find the routing problem interesting!</p>
+<p>Article URL: <a href="https://geospatialml.com/posts/reviewing-ai-slop/">https://geospatialml.com/posts/reviewing-ai-slop/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49116721">https://news.ycombinator.com/item?id=49116721</a></p>
+<p>Points: 199</p>
+<p># Comments: 92</p>
+
+<sub>source: https://hnrss.org/frontpage</sub>
+
+## [Show HN: Distilling DeepSeek into GPT-OSS doesn't transfer censorship. Try it](https://www.ctgt.ai/research/distillation-censorship-transfer)
+
+We released the 20B open weights. So for a finance task at a constrained (perhaps more realistic) budget a 120B on one H100 at ~$0.00026/query outpaced models running 62-160x more per query.<p>We put out the 20B finance model as open weights (64.71% to 74.79% at 8k on FinanceReasoning, 23% lower cost/query, runs on one 80GB GPU), the 120B in a playground with teacher and students side by side (a few queries, no auth), and LineageEval with all prompts, controls, rubric, and code.<p>We are curious to hear experiences from those working with distilled Chinese models in prod, or if you have thoughts on improvements to LineageEval.<p><a href="https://huggingface.co/ctgt-inc/gpt-oss-20b-finance" rel="nofollow">https://huggingface.co/ctgt-inc/gpt-oss-20b-finance</a><p><a href="https://playground.ctgt.ai/">https://playground.ctgt.ai/</a><p><a href="https://github.com/CTGT-Inc/lineage-eval/" rel="nofollow">https://github.com/CTGT-Inc/lineage-eval/</a><p><a href="https://www.ctgt.ai/research/distillation-censorship-transfer">https://www.ctgt.ai/research/distillation-censorship-transfe...</a></p>
 <hr>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49099143">https://news.ycombinator.com/item?id=49099143</a></p>
-<p>Points: 62</p>
-<p># Comments: 57</p>
-
-<sub>source: https://hnrss.org/frontpage</sub>
-
-## [Show HN: Open-source engine running Gemma 4 26B in 2 GB RAM on any M-series Mac](https://github.com/drumih/turbo-fieldfare)
-
-<p>Hi HN,<p>I built a specialized inference engine for running 4-bit Gemma 4 26B-A4B-IT on any M-series Mac using about 2 GB of RAM. The model is surprisingly capable.<p>I would love any kind of feedback!</p>
-<hr>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49098510">https://news.ycombinator.com/item?id=49098510</a></p>
-<p>Points: 802</p>
-<p># Comments: 283</p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49113599">https://news.ycombinator.com/item?id=49113599</a></p>
+<p>Points: 125</p>
+<p># Comments: 64</p>
 
 <sub>source: https://hnrss.org/frontpage</sub>
