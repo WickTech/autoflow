@@ -1,57 +1,57 @@
-# AI Tech Digest — 2026-08-06
+# AI Tech Digest — 2026-08-07
 
-## [Prime Agent: A self-improving RLM agent](https://www.primeintellect.ai/blog/prime-agent)
+## [I won't read LLM authored fiction](https://mccormick.cx/news/entries/why-i-won-t-read-llm-authored-fiction)
 
-<p>Article URL: <a href="https://www.primeintellect.ai/blog/prime-agent">https://www.primeintellect.ai/blog/prime-agent</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49189075">https://news.ycombinator.com/item?id=49189075</a></p>
-<p>Points: 184</p>
-<p># Comments: 37</p>
-
-<sub>source: https://hnrss.org/frontpage</sub>
-
-## [Muse Code and Muse Spark 1.2](https://research.meta.ai/blog/introducing-muse-code-and-muse-spark-1-2)
-
-<p>Article URL: <a href="https://research.meta.ai/blog/introducing-muse-code-and-muse-spark-1-2">https://research.meta.ai/blog/introducing-muse-code-and-muse-spark-1-2</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49187575">https://news.ycombinator.com/item?id=49187575</a></p>
-<p>Points: 261</p>
-<p># Comments: 161</p>
+<p>Article URL: <a href="https://mccormick.cx/news/entries/why-i-won-t-read-llm-authored-fiction">https://mccormick.cx/news/entries/why-i-won-t-read-llm-authored-fiction</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49207146">https://news.ycombinator.com/item?id=49207146</a></p>
+<p>Points: 33</p>
+<p># Comments: 16</p>
 
 <sub>source: https://hnrss.org/frontpage</sub>
 
-## [Born Against, or why hobby programming communities are against LLM usage](https://blog.fogus.me/llm/born-against.html)
+## [New Orleans is testing Carbyne’s AI-powered Emergency Call Triage software](https://www.shreveporttimes.com/story/news/local/louisiana/2026/07/28/is-new-orleans-using-ai-to-answer-911-calls-instead-of-human-dispatchers-impacts-emergencies-crime/91065014007/)
 
-<p>Article URL: <a href="https://blog.fogus.me/llm/born-against.html">https://blog.fogus.me/llm/born-against.html</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49187061">https://news.ycombinator.com/item?id=49187061</a></p>
-<p>Points: 276</p>
-<p># Comments: 260</p>
-
-<sub>source: https://hnrss.org/frontpage</sub>
-
-## [Sycophantic AI Decreases Prosocial Intentions and Promotes Dependence (2025)](https://arxiv.org/abs/2510.01395)
-
-<p>Article URL: <a href="https://arxiv.org/abs/2510.01395">https://arxiv.org/abs/2510.01395</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49186720">https://news.ycombinator.com/item?id=49186720</a></p>
-<p>Points: 128</p>
-<p># Comments: 66</p>
+<p>Article URL: <a href="https://www.shreveporttimes.com/story/news/local/louisiana/2026/07/28/is-new-orleans-using-ai-to-answer-911-calls-instead-of-human-dispatchers-impacts-emergencies-crime/91065014007/">https://www.shreveporttimes.com/story/news/local/louisiana/2026/07/28/is-new-orleans-using-ai-to-answer-911-calls-instead-of-human-dispatchers-impacts-emergencies-crime/91065014007/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49204546">https://news.ycombinator.com/item?id=49204546</a></p>
+<p>Points: 56</p>
+<p># Comments: 76</p>
 
 <sub>source: https://hnrss.org/frontpage</sub>
 
-## [Launch HN: HyperProbe (YC S26) – Agents that do read-only debugging in prod](https://www.hyperprobe.co)
+## [Spin audit of SQD/QSCI quantum-chemistry benchmarks on iron–sulfur clusters](https://zenodo.org/records/21359923)
 
-But this is how it works as of now:<p>You talk to your coding agent the way you already do. And let us know what more features you need to make this a truly autonomous on-call agent<p>Supported platforms: NodeJs, Java, Python.</p>
+Running their shots through their own pipeline, [2Fe-2S] reaches low ⟨S²⟩ but sits 248 mHa off their own reference, and [4Fe-4S] converges to a spin-pure triplet, Var(S²) = 3e-6, a genuine S=1 eigenstate: a clean state, and the wrong one, 1,438 mHa from their reference.<p>Two things in that archive need no analysis from me at all. Worth reading before the hot take.</p>
 <hr>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49185389">https://news.ycombinator.com/item?id=49185389</a></p>
-<p>Points: 57</p>
-<p># Comments: 41</p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49203707">https://news.ycombinator.com/item?id=49203707</a></p>
+<p>Points: 11</p>
+<p># Comments: 1</p>
 
 <sub>source: https://hnrss.org/frontpage</sub>
 
-## [Changes at Google DeepMind: Demis Hassabis from CEO to Chair, Jeff Dean departs](https://blog.google/company-news/inside-google/message-ceo/next-chapter-ai-momentum/)
+## [AMD acquires Taalas to boost inference performance by etching models in silicon](https://www.theregister.com/systems/2026/08/06/amd-acquires-ai-chip-startup-taalas-to-boost-inference-performance-by-etching-models-into-silicon/5284344)
 
-<p><a href="https://www.axios.com/2026/08/05/google-deepmind-demis-hassabis-ai" rel="nofollow">https://www.axios.com/2026/08/05/google-deepmind-demis-hassa...</a><p><a href="https://www.reuters.com/business/google-shakes-up-ai-leadership-deepmind-chief-shifts-role-2026-08-05/" rel="nofollow">https://www.reuters.com/business/google-shakes-up-ai-leaders...</a><p><a href="https://www.discoveryloop.com/" rel="nofollow">https://www.discoveryloop.com/</a>, <a href="https://news.ycombinator.com/item?id=49184960">https://news.ycombinator.com/item?id=49184960</a><p><a href="https://twitter.com/JeffDean/status/2085034604172603724" rel="nofollow">https://twitter.com/JeffDean/status/2085034604172603724</a>, <a href="https://xcancel.com/JeffDean/status/2085034604172603724" rel="nofollow">https://xcancel.com/JeffDean/status/2085034604172603724</a></p>
+<p><a href="https://ir.amd.com/news-events/press-releases/detail/1296/amd-acquires-taalas-to-advance-compute-solutions-for-rapidly-growing-ai-inference-market" rel="nofollow">https://ir.amd.com/news-events/press-releases/detail/1296/am...</a><p><a href="https://chatjimmy.ai/" rel="nofollow">https://chatjimmy.ai/</a></p>
 <hr>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49184755">https://news.ycombinator.com/item?id=49184755</a></p>
-<p>Points: 661</p>
-<p># Comments: 715</p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49201970">https://news.ycombinator.com/item?id=49201970</a></p>
+<p>Points: 632</p>
+<p># Comments: 480</p>
+
+<sub>source: https://hnrss.org/frontpage</sub>
+
+## [Improving GPT‑5.6 Sol in ChatGPT, expanding GPT‑5.6 Luna access for free users](https://openai.com/index/improving-gpt-5-6-sol-in-chatgpt/)
+
+<p>Article URL: <a href="https://openai.com/index/improving-gpt-5-6-sol-in-chatgpt/">https://openai.com/index/improving-gpt-5-6-sol-in-chatgpt/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49199357">https://news.ycombinator.com/item?id=49199357</a></p>
+<p>Points: 230</p>
+<p># Comments: 172</p>
+
+<sub>source: https://hnrss.org/frontpage</sub>
+
+## [Humans missed 1 in 3 threats approving AI agent commands across 40k game runs](https://scalex.dev/blog/ai-agent-permissions-stats/)
+
+<p>Article URL: <a href="https://scalex.dev/blog/ai-agent-permissions-stats/">https://scalex.dev/blog/ai-agent-permissions-stats/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49195468">https://news.ycombinator.com/item?id=49195468</a></p>
+<p>Points: 296</p>
+<p># Comments: 208</p>
 
 <sub>source: https://hnrss.org/frontpage</sub>
