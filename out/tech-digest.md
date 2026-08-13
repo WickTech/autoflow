@@ -1,38 +1,48 @@
-# AI Tech Digest — 2026-08-12
+# AI Tech Digest — 2026-08-13
 
-## [Grok Bot](https://x.ai/bot)
+## [ChatGPT Desktop (Codex Desktop) for Linux](https://openai.com/codex/)
 
-<p>Article URL: <a href="https://x.ai/bot">https://x.ai/bot</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49261514">https://news.ycombinator.com/item?id=49261514</a></p>
-<p>Points: 270</p>
-<p># Comments: 226</p>
-
-<sub>source: https://hnrss.org/frontpage</sub>
-
-## [Go is an ideal language for AI-assisted software engineering](https://developers.googleblog.com/why-go-is-an-ideal-language-for-ai-assisted-software-engineering/)
-
-<p>Article URL: <a href="https://developers.googleblog.com/why-go-is-an-ideal-language-for-ai-assisted-software-engineering/">https://developers.googleblog.com/why-go-is-an-ideal-language-for-ai-assisted-software-engineering/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49261133">https://news.ycombinator.com/item?id=49261133</a></p>
-<p>Points: 365</p>
-<p># Comments: 415</p>
+<p>Article URL: <a href="https://openai.com/codex/">https://openai.com/codex/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49281916">https://news.ycombinator.com/item?id=49281916</a></p>
+<p>Points: 75</p>
+<p># Comments: 26</p>
 
 <sub>source: https://hnrss.org/frontpage</sub>
 
-## [Stealing Reasoning Traces from Proprietary LLM APIs](https://stolen-thoughts.com/)
+## [Happy 45th Birthday to the IBM PC and Model F/XT](https://sharktastica.co.uk/articles/pc-fxt-45)
 
-<p>Article URL: <a href="https://stolen-thoughts.com/">https://stolen-thoughts.com/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49257876">https://news.ycombinator.com/item?id=49257876</a></p>
-<p>Points: 613</p>
-<p># Comments: 276</p>
+<p>Article URL: <a href="https://sharktastica.co.uk/articles/pc-fxt-45">https://sharktastica.co.uk/articles/pc-fxt-45</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49280103">https://news.ycombinator.com/item?id=49280103</a></p>
+<p>Points: 84</p>
+<p># Comments: 21</p>
 
 <sub>source: https://hnrss.org/frontpage</sub>
 
-## [OpenAI’s head of ethics leaves less than a year after joining](https://www.ft.com/content/e49dfb75-f841-4466-a577-f7aaff8779a0)
+## [DeepSeek V4 Pro 0813](https://openrouter.ai/deepseek/deepseek-v4-pro-0813)
 
-<p><a href="https://archive.ph/W48UV" rel="nofollow">https://archive.ph/W48UV</a><p><a href="https://aimagazine.com/news/why-did-openai-head-of-ethics-chloe-bakalar-leave" rel="nofollow">https://aimagazine.com/news/why-did-openai-head-of-ethics-ch...</a></p>
+<p><a href="https://api-docs.deepseek.com/" rel="nofollow">https://api-docs.deepseek.com/</a><p><a href="https://artificialanalysis.ai/models/deepseek-v4-pro" rel="nofollow">https://artificialanalysis.ai/models/deepseek-v4-pro</a><p><a href="https://twitter.com/ChrisGPT/status/2087572834650407024" rel="nofollow">https://twitter.com/ChrisGPT/status/2087572834650407024</a>, <a href="https://xcancel.com/ChrisGPT/status/2087572834650407024" rel="nofollow">https://xcancel.com/ChrisGPT/status/2087572834650407024</a></p>
 <hr>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49257160">https://news.ycombinator.com/item?id=49257160</a></p>
-<p>Points: 417</p>
-<p># Comments: 412</p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49274600">https://news.ycombinator.com/item?id=49274600</a></p>
+<p>Points: 906</p>
+<p># Comments: 369</p>
+
+<sub>source: https://hnrss.org/frontpage</sub>
+
+## [Grok 4.6](https://x.ai/news/grok-4-6)
+
+<p><a href="https://artificialanalysis.ai/articles/grok-4-6-benchmarks-and-analysis" rel="nofollow">https://artificialanalysis.ai/articles/grok-4-6-benchmarks-a...</a></p>
+<hr>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49274027">https://news.ycombinator.com/item?id=49274027</a></p>
+<p>Points: 537</p>
+<p># Comments: 484</p>
+
+<sub>source: https://hnrss.org/frontpage</sub>
+
+## [Someone is running mass vulnerability scans, spoofing AI bots like ClaudeBot](https://knownagents.com/insights)
+
+<p>Article URL: <a href="https://knownagents.com/insights">https://knownagents.com/insights</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49272569">https://news.ycombinator.com/item?id=49272569</a></p>
+<p>Points: 273</p>
+<p># Comments: 200</p>
 
 <sub>source: https://hnrss.org/frontpage</sub>
