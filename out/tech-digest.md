@@ -1,47 +1,37 @@
-# AI Tech Digest — 2026-08-14
+# AI Tech Digest — 2026-08-17
 
-## [GLM-5.3: Frontier coding with emergent cyber capabilities](https://z.ai/blog/glm-5.3)
+## [Anthropic's 'Watermark' Text Adulteration in Claude Is a Perversion of Writing](https://daringfireball.net/2026/08/anthropics_watermark_text_adulteration_in_claude_is_a_perversion_of_writing)
 
-<p>Article URL: <a href="https://z.ai/blog/glm-5.3">https://z.ai/blog/glm-5.3</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49294997">https://news.ycombinator.com/item?id=49294997</a></p>
-<p>Points: 387</p>
-<p># Comments: 150</p>
-
-<sub>source: https://hnrss.org/frontpage</sub>
-
-## [How Organizations Use AI: Evidence from ChatGPT [pdf]](https://cdn.openai.com/pdf/how-organizations-use-chatgpt.pdf)
-
-<p>Article URL: <a href="https://cdn.openai.com/pdf/how-organizations-use-chatgpt.pdf">https://cdn.openai.com/pdf/how-organizations-use-chatgpt.pdf</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49290768">https://news.ycombinator.com/item?id=49290768</a></p>
-<p>Points: 105</p>
-<p># Comments: 62</p>
+<p>Article URL: <a href="https://daringfireball.net/2026/08/anthropics_watermark_text_adulteration_in_claude_is_a_perversion_of_writing">https://daringfireball.net/2026/08/anthropics_watermark_text_adulteration_in_claude_is_a_perversion_of_writing</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49324087">https://news.ycombinator.com/item?id=49324087</a></p>
+<p>Points: 200</p>
+<p># Comments: 189</p>
 
 <sub>source: https://hnrss.org/frontpage</sub>
 
-## [Accelerating GPT-5.6 Sol Ultrafast](https://www.cerebras.ai/blog/accelerating-gpt-5-6-sol-ultrafast-with-openai)
+## [Stripe will reportedly acquire OpenRouter for $7B+](https://techcrunch.com/2026/08/16/stripe-will-reportedly-acquire-ai-gateway-startup-openrouter-for-7b/)
 
-<p>Article URL: <a href="https://www.cerebras.ai/blog/accelerating-gpt-5-6-sol-ultrafast-with-openai">https://www.cerebras.ai/blog/accelerating-gpt-5-6-sol-ultrafast-with-openai</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49289844">https://news.ycombinator.com/item?id=49289844</a></p>
-<p>Points: 575</p>
-<p># Comments: 233</p>
-
-<sub>source: https://hnrss.org/frontpage</sub>
-
-## [Gemini 3.7 Flash](https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-3-7-flash/)
-
-<p><a href="https://ai.google.dev/gemini-api/docs/models/gemini-3.7-flash" rel="nofollow">https://ai.google.dev/gemini-api/docs/models/gemini-3.7-flas...</a></p>
-<hr>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49289112">https://news.ycombinator.com/item?id=49289112</a></p>
-<p>Points: 811</p>
-<p># Comments: 425</p>
+<p>Article URL: <a href="https://techcrunch.com/2026/08/16/stripe-will-reportedly-acquire-ai-gateway-startup-openrouter-for-7b/">https://techcrunch.com/2026/08/16/stripe-will-reportedly-acquire-ai-gateway-startup-openrouter-for-7b/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49323381">https://news.ycombinator.com/item?id=49323381</a></p>
+<p>Points: 327</p>
+<p># Comments: 205</p>
 
 <sub>source: https://hnrss.org/frontpage</sub>
 
-## [Mistral OCR 4.1](https://docs.mistral.ai/models/ocr-4-1)
+## [Red queen hypothesis – A new way forward for self-improving AI](https://www.cst.cam.ac.uk/news/red-queen-hypothesis-new-way-forward-self-improving-ai)
 
-<p>Article URL: <a href="https://docs.mistral.ai/models/ocr-4-1">https://docs.mistral.ai/models/ocr-4-1</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49288889">https://news.ycombinator.com/item?id=49288889</a></p>
-<p>Points: 336</p>
-<p># Comments: 133</p>
+<p>Article URL: <a href="https://www.cst.cam.ac.uk/news/red-queen-hypothesis-new-way-forward-self-improving-ai">https://www.cst.cam.ac.uk/news/red-queen-hypothesis-new-way-forward-self-improving-ai</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49323136">https://news.ycombinator.com/item?id=49323136</a></p>
+<p>Points: 52</p>
+<p># Comments: 10</p>
+
+<sub>source: https://hnrss.org/frontpage</sub>
+
+## [MathCode, Mathematical Coding Agent](https://math-ai-org.github.io/mathcode/)
+
+<p>Article URL: <a href="https://math-ai-org.github.io/mathcode/">https://math-ai-org.github.io/mathcode/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49322330">https://news.ycombinator.com/item?id=49322330</a></p>
+<p>Points: 88</p>
+<p># Comments: 28</p>
 
 <sub>source: https://hnrss.org/frontpage</sub>
