@@ -1,37 +1,56 @@
-# AI Tech Digest — 2026-08-17
+# AI Tech Digest — 2026-08-18
 
-## [Anthropic's 'Watermark' Text Adulteration in Claude Is a Perversion of Writing](https://daringfireball.net/2026/08/anthropics_watermark_text_adulteration_in_claude_is_a_perversion_of_writing)
+## [GPT-5.6 Sol Pricing Cut by 50%](https://openrouter.ai/openai/gpt-5.6-sol)
 
-<p>Article URL: <a href="https://daringfireball.net/2026/08/anthropics_watermark_text_adulteration_in_claude_is_a_perversion_of_writing">https://daringfireball.net/2026/08/anthropics_watermark_text_adulteration_in_claude_is_a_perversion_of_writing</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49324087">https://news.ycombinator.com/item?id=49324087</a></p>
-<p>Points: 200</p>
-<p># Comments: 189</p>
-
-<sub>source: https://hnrss.org/frontpage</sub>
-
-## [Stripe will reportedly acquire OpenRouter for $7B+](https://techcrunch.com/2026/08/16/stripe-will-reportedly-acquire-ai-gateway-startup-openrouter-for-7b/)
-
-<p>Article URL: <a href="https://techcrunch.com/2026/08/16/stripe-will-reportedly-acquire-ai-gateway-startup-openrouter-for-7b/">https://techcrunch.com/2026/08/16/stripe-will-reportedly-acquire-ai-gateway-startup-openrouter-for-7b/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49323381">https://news.ycombinator.com/item?id=49323381</a></p>
-<p>Points: 327</p>
-<p># Comments: 205</p>
+<p>Article URL: <a href="https://openrouter.ai/openai/gpt-5.6-sol">https://openrouter.ai/openai/gpt-5.6-sol</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49337602">https://news.ycombinator.com/item?id=49337602</a></p>
+<p>Points: 402</p>
+<p># Comments: 226</p>
 
 <sub>source: https://hnrss.org/frontpage</sub>
 
-## [Red queen hypothesis – A new way forward for self-improving AI](https://www.cst.cam.ac.uk/news/red-queen-hypothesis-new-way-forward-self-improving-ai)
+## [Israel creates fake think tank in likely attempt to dupe AI chatbots](https://responsiblestatecraft.org/israel-influence-chatgpt/)
 
-<p>Article URL: <a href="https://www.cst.cam.ac.uk/news/red-queen-hypothesis-new-way-forward-self-improving-ai">https://www.cst.cam.ac.uk/news/red-queen-hypothesis-new-way-forward-self-improving-ai</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49323136">https://news.ycombinator.com/item?id=49323136</a></p>
-<p>Points: 52</p>
-<p># Comments: 10</p>
+<p>Article URL: <a href="https://responsiblestatecraft.org/israel-influence-chatgpt/">https://responsiblestatecraft.org/israel-influence-chatgpt/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49337392">https://news.ycombinator.com/item?id=49337392</a></p>
+<p>Points: 429</p>
+<p># Comments: 275</p>
 
 <sub>source: https://hnrss.org/frontpage</sub>
 
-## [MathCode, Mathematical Coding Agent](https://math-ai-org.github.io/mathcode/)
+## [AI;DR (AI; Didn't Read)](https://www.rickmanelius.com/p/aidr-ai-didnt-read)
 
-<p>Article URL: <a href="https://math-ai-org.github.io/mathcode/">https://math-ai-org.github.io/mathcode/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49322330">https://news.ycombinator.com/item?id=49322330</a></p>
-<p>Points: 88</p>
-<p># Comments: 28</p>
+<p>Article URL: <a href="https://www.rickmanelius.com/p/aidr-ai-didnt-read">https://www.rickmanelius.com/p/aidr-ai-didnt-read</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49336573">https://news.ycombinator.com/item?id=49336573</a></p>
+<p>Points: 838</p>
+<p># Comments: 519</p>
+
+<sub>source: https://hnrss.org/frontpage</sub>
+
+## [Launch HN: Speko (YC S26) – OpenRouter for Voice AI](https://speko.ai/)
+
+<p>Hi HN! Since we started the batch in late June, external usage has grown about 25 percent per week on average, front-loaded toward the launch weeks.<p>I would love feedback from the community: how do you pick speech models now, and what makes you trust the third-party benchmark?<p><a href="https://speko.ai/">https://speko.ai/</a></p>
+<hr>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49332751">https://news.ycombinator.com/item?id=49332751</a></p>
+<p>Points: 101</p>
+<p># Comments: 58</p>
+
+<sub>source: https://hnrss.org/frontpage</sub>
+
+## [AI-Generated GitHub Copilot “Autofix” Allowed Compromise of Snowflake's Jira](https://www.wiz.io/blog/red-agent-snowflake-copilot-cicd-bug)
+
+<p>Article URL: <a href="https://www.wiz.io/blog/red-agent-snowflake-copilot-cicd-bug">https://www.wiz.io/blog/red-agent-snowflake-copilot-cicd-bug</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49331423">https://news.ycombinator.com/item?id=49331423</a></p>
+<p>Points: 365</p>
+<p># Comments: 141</p>
+
+<sub>source: https://hnrss.org/frontpage</sub>
+
+## [How to disable or avoid intrusive AI](https://www.librarian.net/notoai/)
+
+<p>Article URL: <a href="https://www.librarian.net/notoai/">https://www.librarian.net/notoai/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49331220">https://news.ycombinator.com/item?id=49331220</a></p>
+<p>Points: 294</p>
+<p># Comments: 174</p>
 
 <sub>source: https://hnrss.org/frontpage</sub>
