@@ -1,19 +1,34 @@
-# AI Tech Digest — 2026-08-19
+# AI Tech Digest — 2026-08-20
 
-## [Cerebras CS-4](https://www.cerebras.ai/cs4)
+## [Unsloth Dynamic 3.0 GGUFs](https://unsloth.ai/docs/basics/dynamic-3.0-ggufs)
 
-<p>Article URL: <a href="https://www.cerebras.ai/cs4">https://www.cerebras.ai/cs4</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49354949">https://news.ycombinator.com/item?id=49354949</a></p>
-<p>Points: 247</p>
-<p># Comments: 165</p>
+<p>Article URL: <a href="https://unsloth.ai/docs/basics/dynamic-3.0-ggufs">https://unsloth.ai/docs/basics/dynamic-3.0-ggufs</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49365443">https://news.ycombinator.com/item?id=49365443</a></p>
+<p>Points: 252</p>
+<p># Comments: 92</p>
 
 <sub>source: https://hnrss.org/frontpage</sub>
 
-## [AI usage patterns in software teams](https://linear.app/data)
+## [Launch HN: OneCLI (YC S26) – OSS sandboxed agent harness for teams](https://github.com/onecli/onecli)
 
-<p>Article URL: <a href="https://linear.app/data">https://linear.app/data</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49353432">https://news.ycombinator.com/item?id=49353432</a></p>
-<p>Points: 130</p>
-<p># Comments: 66</p>
+<p>Hi HN, Jonathan & Guy here from OneCLI, an agent harness built for teams, giving every employee a secured, sandboxed personal agent.<p>Here’s what you can do with it:<p>1. The agent can't bypass it.<p>Isolated VM per agent.
+
+<sub>source: https://hnrss.org/frontpage</sub>
+
+## [Mathematics in the age of AI](https://arxiv.org/abs/2608.16753)
+
+<p>Article URL: <a href="https://arxiv.org/abs/2608.16753">https://arxiv.org/abs/2608.16753</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49362728">https://news.ycombinator.com/item?id=49362728</a></p>
+<p>Points: 158</p>
+<p># Comments: 190</p>
+
+<sub>source: https://hnrss.org/frontpage</sub>
+
+## [Ornith-1.5: From Self-Scaffolding to Self-Improvement](https://ornith.ai/ornith_1_5.html)
+
+<p>Article URL: <a href="https://ornith.ai/ornith_1_5.html">https://ornith.ai/ornith_1_5.html</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49362401">https://news.ycombinator.com/item?id=49362401</a></p>
+<p>Points: 193</p>
+<p># Comments: 65</p>
 
 <sub>source: https://hnrss.org/frontpage</sub>
