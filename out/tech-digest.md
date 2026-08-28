@@ -1,29 +1,38 @@
-# AI Tech Digest — 2026-08-27
+# AI Tech Digest — 2026-08-28
 
-## [Gemini Omni 1.1 Flash](https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-omni-1-1-flash/)
+## [The Analytical AI Handbook](https://handbook.sutro.sh)
 
-<p>Article URL: <a href="https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-omni-1-1-flash/">https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-omni-1-1-flash/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49467922">https://news.ycombinator.com/item?id=49467922</a></p>
-<p>Points: 17</p>
+<p>Article URL: <a href="https://handbook.sutro.sh">https://handbook.sutro.sh</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49482925">https://news.ycombinator.com/item?id=49482925</a></p>
+<p>Points: 9</p>
 <p># Comments: 0</p>
 
 <sub>source: https://hnrss.org/frontpage</sub>
 
-## [Bild AI (YC W25) is hiring product and AI engineers](https://www.bild.ai/jobs)
+## [Autonomous Mathematical Discovery in an Open-World Multi-Agent Environment](https://arxiv.org/abs/2608.23691)
 
-<p>Article URL: <a href="https://www.bild.ai/jobs">https://www.bild.ai/jobs</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49467837">https://news.ycombinator.com/item?id=49467837</a></p>
-<p>Points: 0</p>
+<p>Article URL: <a href="https://arxiv.org/abs/2608.23691">https://arxiv.org/abs/2608.23691</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49481455">https://news.ycombinator.com/item?id=49481455</a></p>
+<p>Points: 32</p>
 <p># Comments: 0</p>
 
 <sub>source: https://hnrss.org/frontpage</sub>
 
-## [Launch HN: Salem Robotics (YC S26) – Software for industrial inspection robots](https://news.ycombinator.com/item?id=49466715)
+## [GLM-5.3 is now open-weight](https://huggingface.co/zai-org/GLM-5.3)
 
-<p>Hi HN, we're the founders of Salem Robotics (<a href="https://salemroboticsinc.com">https://salemroboticsinc.com</a>). We'd also be interested in hearing about other industries where you've seen physical inspection tasks that look trivial to a person but are surprisingly difficult to automate.</p>
+<p><a href="https://twitter.com/Zai_org/status/2093354097122455713" rel="nofollow">https://twitter.com/Zai_org/status/2093354097122455713</a><p><a href="https://z.ai/blog/glm-5.3" rel="nofollow">https://z.ai/blog/glm-5.3</a></p>
 <hr>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49466715">https://news.ycombinator.com/item?id=49466715</a></p>
-<p>Points: 25</p>
-<p># Comments: 16</p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49479878">https://news.ycombinator.com/item?id=49479878</a></p>
+<p>Points: 390</p>
+<p># Comments: 139</p>
+
+<sub>source: https://hnrss.org/frontpage</sub>
+
+## [Don't use musl if you care about performance](https://blog.brokk.ai/dont-use-musl-if-you-care-about-performance/)
+
+<p>Article URL: <a href="https://blog.brokk.ai/dont-use-musl-if-you-care-about-performance/">https://blog.brokk.ai/dont-use-musl-if-you-care-about-performance/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49479826">https://news.ycombinator.com/item?id=49479826</a></p>
+<p>Points: 71</p>
+<p># Comments: 42</p>
 
 <sub>source: https://hnrss.org/frontpage</sub>
