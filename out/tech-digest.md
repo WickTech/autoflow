@@ -1,56 +1,37 @@
-# AI Tech Digest — 2026-09-14
+# AI Tech Digest — 2026-09-15
 
-## [Temporal raises $550M at a $12.55B valuation](https://temporal.io/blog/temporal-raises-usd550m-series-e-at-usd12-55b-valuation-ai)
+## [OpenAI buys smartphone camera maker Glass Imaging for $300M](https://techcrunch.com/2026/09/14/openai-buys-smartphone-camera-maker-glass-imaging-for-300-million-report-says/)
 
-<p>Article URL: <a href="https://temporal.io/blog/temporal-raises-usd550m-series-e-at-usd12-55b-valuation-ai">https://temporal.io/blog/temporal-raises-usd550m-series-e-at-usd12-55b-valuation-ai</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49696335">https://news.ycombinator.com/item?id=49696335</a></p>
-<p>Points: 33</p>
-<p># Comments: 12</p>
-
-<sub>source: https://hnrss.org/frontpage</sub>
-
-## [Show HN: I built Otis, a minimal AI agent that runs local models out of the box](https://triangllabs.ai/otis)
-
-<p>Hi everyone,<p>Been working on Otis, an open-source ai agent that gives you one minimal experience across local and hosted open-weight models, privacy-focused by design.<p>On setup it recommends a local model based on the hardware Otis is running on, downloads it and runs it through llama.cpp for you. Ollama, LM Studio and Nvidia PAIR are supported too.<p>Excited for everyone to try it and all feedback is welcome!</p>
-<hr>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49696084">https://news.ycombinator.com/item?id=49696084</a></p>
-<p>Points: 3</p>
-<p># Comments: 0</p>
+<p>Article URL: <a href="https://techcrunch.com/2026/09/14/openai-buys-smartphone-camera-maker-glass-imaging-for-300-million-report-says/">https://techcrunch.com/2026/09/14/openai-buys-smartphone-camera-maker-glass-imaging-for-300-million-report-says/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49711240">https://news.ycombinator.com/item?id=49711240</a></p>
+<p>Points: 20</p>
+<p># Comments: 3</p>
 
 <sub>source: https://hnrss.org/frontpage</sub>
 
-## [What a time to be alive – rouge AI agents attack RubyGems.org](https://tenderlovemaking.com/2026/09/11/what-a-time-to-be-alive/)
+## [Pion, an agent designed to run any company autonomously](https://andonlabs.com/blog/why-we-built-pion)
 
-<p>Article URL: <a href="https://tenderlovemaking.com/2026/09/11/what-a-time-to-be-alive/">https://tenderlovemaking.com/2026/09/11/what-a-time-to-be-alive/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49695876">https://news.ycombinator.com/item?id=49695876</a></p>
-<p>Points: 87</p>
-<p># Comments: 111</p>
-
-<sub>source: https://hnrss.org/frontpage</sub>
-
-## [Apple's Siri AI Can Be Swapped Out for Claude, ChatGPT, Code Shows](https://www.macrumors.com/2026/09/14/siri-can-be-swapped-out-for-chatgpt-claude/)
-
-<p>Article URL: <a href="https://www.macrumors.com/2026/09/14/siri-can-be-swapped-out-for-chatgpt-claude/">https://www.macrumors.com/2026/09/14/siri-can-be-swapped-out-for-chatgpt-claude/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49695409">https://news.ycombinator.com/item?id=49695409</a></p>
-<p>Points: 127</p>
-<p># Comments: 49</p>
+<p>Article URL: <a href="https://andonlabs.com/blog/why-we-built-pion">https://andonlabs.com/blog/why-we-built-pion</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49700477">https://news.ycombinator.com/item?id=49700477</a></p>
+<p>Points: 436</p>
+<p># Comments: 537</p>
 
 <sub>source: https://hnrss.org/frontpage</sub>
 
-## [Big AI sets out its terms for regulatory capture](https://www.theregister.com/ai-and-ml/2026/09/14/big-ai-sets-out-its-terms-for-regulatory-capture-and-calls-it-pace-the-frontier/5296067)
+## [A rough guide for going back to the Moon](https://research.ibm.com/blog/nasa-ibm-lunar-foundation-model)
 
-<p>Article URL: <a href="https://www.theregister.com/ai-and-ml/2026/09/14/big-ai-sets-out-its-terms-for-regulatory-capture-and-calls-it-pace-the-frontier/5296067">https://www.theregister.com/ai-and-ml/2026/09/14/big-ai-sets-out-its-terms-for-regulatory-capture-and-calls-it-pace-the-frontier/5296067</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49694596">https://news.ycombinator.com/item?id=49694596</a></p>
-<p>Points: 55</p>
-<p># Comments: 22</p>
+<p>Article URL: <a href="https://research.ibm.com/blog/nasa-ibm-lunar-foundation-model">https://research.ibm.com/blog/nasa-ibm-lunar-foundation-model</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49697549">https://news.ycombinator.com/item?id=49697549</a></p>
+<p>Points: 21</p>
+<p># Comments: 9</p>
 
 <sub>source: https://hnrss.org/frontpage</sub>
 
-## [OpenArch – PyTorch implementations of modern LLM architectures](https://github.com/anuj0456/OpenArch)
+## [Dropping eBPF CPU Cost by About 90% with Memoization (Not AI Gen)](https://nathannaveen.dev/posts/dropping-ebpf-cpu-cost-by-90/)
 
-<p>Article URL: <a href="https://github.com/anuj0456/OpenArch">https://github.com/anuj0456/OpenArch</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49693384">https://news.ycombinator.com/item?id=49693384</a></p>
-<p>Points: 95</p>
-<p># Comments: 19</p>
+<p>Article URL: <a href="https://nathannaveen.dev/posts/dropping-ebpf-cpu-cost-by-90/">https://nathannaveen.dev/posts/dropping-ebpf-cpu-cost-by-90/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49697477">https://news.ycombinator.com/item?id=49697477</a></p>
+<p>Points: 136</p>
+<p># Comments: 29</p>
 
 <sub>source: https://hnrss.org/frontpage</sub>
