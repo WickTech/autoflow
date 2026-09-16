@@ -1,37 +1,46 @@
-# AI Tech Digest — 2026-09-15
+# AI Tech Digest — 2026-09-16
 
-## [OpenAI buys smartphone camera maker Glass Imaging for $300M](https://techcrunch.com/2026/09/14/openai-buys-smartphone-camera-maker-glass-imaging-for-300-million-report-says/)
+## [Mistral X Mozilla: Private, Multilingual AI Browsing](https://mistral.ai/news/mistral-x-mozilla/)
 
-<p>Article URL: <a href="https://techcrunch.com/2026/09/14/openai-buys-smartphone-camera-maker-glass-imaging-for-300-million-report-says/">https://techcrunch.com/2026/09/14/openai-buys-smartphone-camera-maker-glass-imaging-for-300-million-report-says/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49711240">https://news.ycombinator.com/item?id=49711240</a></p>
-<p>Points: 20</p>
-<p># Comments: 3</p>
-
-<sub>source: https://hnrss.org/frontpage</sub>
-
-## [Pion, an agent designed to run any company autonomously](https://andonlabs.com/blog/why-we-built-pion)
-
-<p>Article URL: <a href="https://andonlabs.com/blog/why-we-built-pion">https://andonlabs.com/blog/why-we-built-pion</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49700477">https://news.ycombinator.com/item?id=49700477</a></p>
-<p>Points: 436</p>
-<p># Comments: 537</p>
+<p>Article URL: <a href="https://mistral.ai/news/mistral-x-mozilla/">https://mistral.ai/news/mistral-x-mozilla/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49723408">https://news.ycombinator.com/item?id=49723408</a></p>
+<p>Points: 154</p>
+<p># Comments: 39</p>
 
 <sub>source: https://hnrss.org/frontpage</sub>
 
-## [A rough guide for going back to the Moon](https://research.ibm.com/blog/nasa-ibm-lunar-foundation-model)
+## [Datamimic – don't let your coding agent invent its own test world](https://github.com/rapiddweller/datamimic)
 
-<p>Article URL: <a href="https://research.ibm.com/blog/nasa-ibm-lunar-foundation-model">https://research.ibm.com/blog/nasa-ibm-lunar-foundation-model</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49697549">https://news.ycombinator.com/item?id=49697549</a></p>
-<p>Points: 21</p>
-<p># Comments: 9</p>
+<p>Article URL: <a href="https://github.com/rapiddweller/datamimic">https://github.com/rapiddweller/datamimic</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49722276">https://news.ycombinator.com/item?id=49722276</a></p>
+<p>Points: 47</p>
+<p># Comments: 8</p>
 
 <sub>source: https://hnrss.org/frontpage</sub>
 
-## [Dropping eBPF CPU Cost by About 90% with Memoization (Not AI Gen)](https://nathannaveen.dev/posts/dropping-ebpf-cpu-cost-by-90/)
+## [Introducing System One Models and Jev](https://typesafe.ai/blog/introducing-system-one-models-and-jev)
 
-<p>Article URL: <a href="https://nathannaveen.dev/posts/dropping-ebpf-cpu-cost-by-90/">https://nathannaveen.dev/posts/dropping-ebpf-cpu-cost-by-90/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49697477">https://news.ycombinator.com/item?id=49697477</a></p>
-<p>Points: 136</p>
-<p># Comments: 29</p>
+<p>Article URL: <a href="https://typesafe.ai/blog/introducing-system-one-models-and-jev">https://typesafe.ai/blog/introducing-system-one-models-and-jev</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49717558">https://news.ycombinator.com/item?id=49717558</a></p>
+<p>Points: 1520</p>
+<p># Comments: 432</p>
+
+<sub>source: https://hnrss.org/frontpage</sub>
+
+## [We got admin access to Baseten's production GitHub](https://www.strix.ai/blog/baseten-harbor-github-pat-takeover)
+
+<p>Article URL: <a href="https://www.strix.ai/blog/baseten-harbor-github-pat-takeover">https://www.strix.ai/blog/baseten-harbor-github-pat-takeover</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49716476">https://news.ycombinator.com/item?id=49716476</a></p>
+<p>Points: 293</p>
+<p># Comments: 171</p>
+
+<sub>source: https://hnrss.org/frontpage</sub>
+
+## [Gemini 3.8 Live and 3.8 Live Extended Thinking](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/)
+
+<p>Article URL: <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/">https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49715947">https://news.ycombinator.com/item?id=49715947</a></p>
+<p>Points: 435</p>
+<p># Comments: 295</p>
 
 <sub>source: https://hnrss.org/frontpage</sub>
