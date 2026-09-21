@@ -1,73 +1,39 @@
-# AI Tech Digest — 2026-09-18
+# AI Tech Digest — 2026-09-21
 
-## [Cekura (YC F24) Is Hiring](https://www.ycombinator.com/companies/cekura-ai/jobs/AiWwUxI-forward-deployed-engineer-us)
+## [M5 Ultra Mac Studio Review: The Dream Mac for Local AI Agents](https://www.macstories.net/stories/m5-ultra-mac-studio-review-the-dream-mac-for-local-ai-agents/)
 
-<p>Article URL: <a href="https://www.ycombinator.com/companies/cekura-ai/jobs/AiWwUxI-forward-deployed-engineer-us">https://www.ycombinator.com/companies/cekura-ai/jobs/AiWwUxI-forward-deployed-engineer-us</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49753131">https://news.ycombinator.com/item?id=49753131</a></p>
-<p>Points: 0</p>
-<p># Comments: 0</p>
-
-<sub>source: https://hnrss.org/frontpage</sub>
-
-## [ZCode, the GLM coding agent, silently uploads your Git history](https://tokenstead.ai/guides/zcode-silent-git-history-upload)
-
-<p>Article URL: <a href="https://tokenstead.ai/guides/zcode-silent-git-history-upload">https://tokenstead.ai/guides/zcode-silent-git-history-upload</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49752422">https://news.ycombinator.com/item?id=49752422</a></p>
-<p>Points: 95</p>
-<p># Comments: 17</p>
+<p>Article URL: <a href="https://www.macstories.net/stories/m5-ultra-mac-studio-review-the-dream-mac-for-local-ai-agents/">https://www.macstories.net/stories/m5-ultra-mac-studio-review-the-dream-mac-for-local-ai-agents/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49787313">https://news.ycombinator.com/item?id=49787313</a></p>
+<p>Points: 22</p>
+<p># Comments: 3</p>
 
 <sub>source: https://hnrss.org/frontpage</sub>
 
-## [Microsoft exec called AI scraping 'the largest theft of labor in human history'](https://techcrunch.com/2026/09/17/microsoft-exec-called-ai-scraping-the-largest-theft-of-labor-in-human-history-new-unredacted-filings-reveal/)
+## [Ask HN: Is it impossible to disable Siri on macOS 27?](https://news.ycombinator.com/item?id=49786609)
 
-<p>Article URL: <a href="https://techcrunch.com/2026/09/17/microsoft-exec-called-ai-scraping-the-largest-theft-of-labor-in-human-history-new-unredacted-filings-reveal/">https://techcrunch.com/2026/09/17/microsoft-exec-called-ai-scraping-the-largest-theft-of-labor-in-human-history-new-unredacted-filings-reveal/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49752056">https://news.ycombinator.com/item?id=49752056</a></p>
-<p>Points: 291</p>
-<p># Comments: 227</p>
-
-<sub>source: https://hnrss.org/frontpage</sub>
-
-## [A heap overflow and SSO misconfiguration to compromise OpenAI internal repos](https://www.hacktron.ai/blog/hacking-openai)
-
-<p>Article URL: <a href="https://www.hacktron.ai/blog/hacking-openai">https://www.hacktron.ai/blog/hacking-openai</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49749656">https://news.ycombinator.com/item?id=49749656</a></p>
-<p>Points: 374</p>
-<p># Comments: 161</p>
+<p>I disabled Siri in the Settings app, and then further disabled Siri and its extensions in Settings > Screen Time.<p>Next, I disabled all Siri-related and Apple Intelligence-related services as per https://github.com/OleksandrKrupko/mac-os-debloat<p>But after restarting, I could still see a "Siri" process running in Activity Monitor. Is it really impossible to fully turn off Siri, Siri AI, Apple Intelligence and all related services and features on macOS 27?</p>
+<hr>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49786609">https://news.ycombinator.com/item?id=49786609</a></p>
+<p>Points: 44</p>
+<p># Comments: 19</p>
 
 <sub>source: https://hnrss.org/frontpage</sub>
 
-## [Qwen 3.8 Omni Flash](https://qwen.ai/blog?id=qwen3.8-omni-flash)
+## [Don't Use AI to Write](https://paulbakker.io/writing/no-ai-for-writing/)
 
-<p>Article URL: <a href="https://qwen.ai/blog?id=qwen3.8-omni-flash">https://qwen.ai/blog?id=qwen3.8-omni-flash</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49747925">https://news.ycombinator.com/item?id=49747925</a></p>
-<p>Points: 257</p>
-<p># Comments: 90</p>
-
-<sub>source: https://hnrss.org/frontpage</sub>
-
-## [How to Write with an LLM](https://sockpuppet.org/blog/2026/09/17/how-to-write-with-an-llm/)
-
-<p>Article URL: <a href="https://sockpuppet.org/blog/2026/09/17/how-to-write-with-an-llm/">https://sockpuppet.org/blog/2026/09/17/how-to-write-with-an-llm/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49747070">https://news.ycombinator.com/item?id=49747070</a></p>
-<p>Points: 204</p>
-<p># Comments: 131</p>
+<p>Article URL: <a href="https://paulbakker.io/writing/no-ai-for-writing/">https://paulbakker.io/writing/no-ai-for-writing/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49784816">https://news.ycombinator.com/item?id=49784816</a></p>
+<p>Points: 23</p>
+<p># Comments: 8</p>
 
 <sub>source: https://hnrss.org/frontpage</sub>
 
-## [Bend – A language that blocks AI mistakes via proof, on CPU and GPU](https://bend-lang.com/)
+## [Show HN: Mini-AGI – Dynamic continual learning model trained on 8GB VRAM](https://github.com/volotat/mini-AGI/)
 
-<p>Article URL: <a href="https://bend-lang.com/">https://bend-lang.com/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49746163">https://news.ycombinator.com/item?id=49746163</a></p>
-<p>Points: 504</p>
-<p># Comments: 238</p>
-
-<sub>source: https://hnrss.org/frontpage</sub>
-
-## [Astra for Law](https://openai.com/index/astra-for-law/)
-
-<p>Article URL: <a href="https://openai.com/index/astra-for-law/">https://openai.com/index/astra-for-law/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49745940">https://news.ycombinator.com/item?id=49745940</a></p>
-<p>Points: 516</p>
-<p># Comments: 603</p>
+<p>Sorry for the pretentious name, I know, I know.. Just as you or I would do.<p>The set up seems to be really simple so you can git clone the project, run it and observe everything for yourself.<p>Thanks for your attention.</p>
+<hr>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49783133">https://news.ycombinator.com/item?id=49783133</a></p>
+<p>Points: 195</p>
+<p># Comments: 41</p>
 
 <sub>source: https://hnrss.org/frontpage</sub>
