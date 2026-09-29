@@ -1,28 +1,46 @@
-# AI Tech Digest — 2026-09-28
+# AI Tech Digest — 2026-09-29
 
-## [Nvidia wants to put a watchdog chip next to every AI agent](https://madrobot.blog/2026/09/28/nvidia-open-agent-safety-platform-openshell-sentry-rogue-ai-agents/)
+## [Show HN: Jevstiller – Distill Jev into a local model, with a disagreement bound](https://jevstiller.pages.dev/posts/the-guarantee/)
 
-<p>Article URL: <a href="https://madrobot.blog/2026/09/28/nvidia-open-agent-safety-platform-openshell-sentry-rogue-ai-agents/">https://madrobot.blog/2026/09/28/nvidia-open-agent-safety-platform-openshell-sentry-rogue-ai-agents/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49879883">https://news.ycombinator.com/item?id=49879883</a></p>
-<p>Points: 12</p>
-<p># Comments: 15</p>
-
-<sub>source: https://hnrss.org/frontpage</sub>
-
-## [What Would a Serious AI Product Look Like?](https://blog.glyph.im/2026/09/serious-ai-product.html)
-
-<p>Article URL: <a href="https://blog.glyph.im/2026/09/serious-ai-product.html">https://blog.glyph.im/2026/09/serious-ai-product.html</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49876148">https://news.ycombinator.com/item?id=49876148</a></p>
-<p>Points: 14</p>
-<p># Comments: 2</p>
+<p>Article URL: <a href="https://jevstiller.pages.dev/posts/the-guarantee/">https://jevstiller.pages.dev/posts/the-guarantee/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49891769">https://news.ycombinator.com/item?id=49891769</a></p>
+<p>Points: 4</p>
+<p># Comments: 0</p>
 
 <sub>source: https://hnrss.org/frontpage</sub>
 
-## [Thinking fast and slow in AI: The role of metacognition (2021)](https://arxiv.org/abs/2110.01834)
+## [Show HN: Raven – The harness of harnesses, built for RSI](https://github.com/EverMind-AI/Raven)
 
-<p>Article URL: <a href="https://arxiv.org/abs/2110.01834">https://arxiv.org/abs/2110.01834</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49873241">https://news.ycombinator.com/item?id=49873241</a></p>
-<p>Points: 151</p>
-<p># Comments: 60</p>
+<p>Article URL: <a href="https://github.com/EverMind-AI/Raven">https://github.com/EverMind-AI/Raven</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49890647">https://news.ycombinator.com/item?id=49890647</a></p>
+<p>Points: 29</p>
+<p># Comments: 19</p>
+
+<sub>source: https://hnrss.org/frontpage</sub>
+
+## [AI companies leak data to advertisers [pdf]](https://jorgegarciaherrero.com/wp-content/interactivos/20260916-Prompt-like-a-butterfly-sting-like-a-tracker-(clean).pdf)
+
+<p>Article URL: <a href="https://jorgegarciaherrero.com/wp-content/interactivos/20260916-Prompt-like-a-butterfly-sting-like-a-tracker-(clean).pdf">https://jorgegarciaherrero.com/wp-content/interactivos/20260916-Prompt-like-a-butterfly-sting-like-a-tracker-(clean).pdf</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49890226">https://news.ycombinator.com/item?id=49890226</a></p>
+<p>Points: 274</p>
+<p># Comments: 90</p>
+
+<sub>source: https://hnrss.org/frontpage</sub>
+
+## [ESP32S3 cluster running 1.58-bit (BitNet) Language model](https://github.com/Low-Zi-Hong/ESP32s3-LLM-Cluster)
+
+<p>Article URL: <a href="https://github.com/Low-Zi-Hong/ESP32s3-LLM-Cluster">https://github.com/Low-Zi-Hong/ESP32s3-LLM-Cluster</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49884625">https://news.ycombinator.com/item?id=49884625</a></p>
+<p>Points: 129</p>
+<p># Comments: 29</p>
+
+<sub>source: https://hnrss.org/frontpage</sub>
+
+## [MicroLLM Lab – Try 7 tiny LLM's in the browser](https://stateofutopia.com/experiments/microllmlab/)
+
+<p>Article URL: <a href="https://stateofutopia.com/experiments/microllmlab/">https://stateofutopia.com/experiments/microllmlab/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49882781">https://news.ycombinator.com/item?id=49882781</a></p>
+<p>Points: 264</p>
+<p># Comments: 97</p>
 
 <sub>source: https://hnrss.org/frontpage</sub>
