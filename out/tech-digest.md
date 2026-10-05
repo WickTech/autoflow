@@ -1,19 +1,10 @@
-# AI Tech Digest — 2026-10-02
+# AI Tech Digest — 2026-10-05
 
-## [Frog and Toad and the Increasingly Capable Machines](https://www.frogandtoad.ai/)
+## [Florida woman arrested for allegedly making threats in an AI chat](https://www.theverge.com/ai-artificial-intelligence/1004747/florida-woman-arrested-for-allegedly-making-threats-in-an-ai-chat)
 
-<p>Article URL: <a href="https://www.frogandtoad.ai/">https://www.frogandtoad.ai/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49927760">https://news.ycombinator.com/item?id=49927760</a></p>
-<p>Points: 313</p>
-<p># Comments: 76</p>
-
-<sub>source: https://hnrss.org/frontpage</sub>
-
-## [Vote on which of Hacker News' challenges for AI have been met](https://stoppels.ch/goalposts/)
-
-<p>Article URL: <a href="https://stoppels.ch/goalposts/">https://stoppels.ch/goalposts/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49924618">https://news.ycombinator.com/item?id=49924618</a></p>
-<p>Points: 173</p>
-<p># Comments: 207</p>
+<p>Article URL: <a href="https://www.theverge.com/ai-artificial-intelligence/1004747/florida-woman-arrested-for-allegedly-making-threats-in-an-ai-chat">https://www.theverge.com/ai-artificial-intelligence/1004747/florida-woman-arrested-for-allegedly-making-threats-in-an-ai-chat</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49965895">https://news.ycombinator.com/item?id=49965895</a></p>
+<p>Points: 18</p>
+<p># Comments: 10</p>
 
 <sub>source: https://hnrss.org/frontpage</sub>
