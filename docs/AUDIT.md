@@ -154,3 +154,23 @@ rather than waiting for tomorrow's 08:00 UTC cron.
 
 Also note: `autoflow/sources/reddit.py` and `tests/test_reddit.py` are **not yet
 committed**. They should go up in the same PR as these fixes.
+
+---
+
+## 5. Follow-up audit — 2026-10-11
+
+Fixed on `fix/audit-2026-10-11`, each with regression tests:
+
+| # | Finding | Fix |
+|---|---------|-----|
+| 1 | SMTP `starttls()` / `SMTP_SSL` used smtplib's default context, which skips certificate and hostname checks | `ssl.create_default_context()` on both paths; credentials refused without TLS |
+| 2 | hnrss descriptions (pure HTML link metadata) were published verbatim as "summaries" | `html_to_text()` for titles and content; hnrss fields move to `Item.metadata`; no summary when there's no body |
+| 3 | Bot-token / webhook URLs logged on retry and embedded in `HTTPStatusError` | `net._redact_url` + `net.raise_for_status` |
+| 4 | One dead feed or subreddit aborted the whole run | `sources.base.fetch_each` skips and logs failures; re-raises only if every source fails |
+| 5 | POSTs retried after 500/502/504 and read timeouts, so messages could post twice | POST retries only connect failures and 408/425/429/503 |
+| 6 | Feed text unescaped in Slack (`<!channel>` pings) and Markdown; Telegram markup errors blocked every later run | Per-dialect escaping in `render.py`; Telegram resends as plain text on "can't parse entities" |
+
+Still open (lower risk): redirects are followed on every request; `limit` is
+applied after concatenating sources, so the first feed can starve the rest; a
+corrupt state file silently resets dedup; a partly failed multi-sink or
+multi-message delivery is re-sent in full on the next run (at-least-once).
