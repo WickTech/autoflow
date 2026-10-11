@@ -90,3 +90,11 @@ def test_seen_store_survives_a_corrupt_file(tmp_path):
     store.add("x")
     store.save()
     assert json.loads(path.read_text(encoding="utf-8")) == ["x"]
+
+
+def test_summarize_skips_items_without_content():
+    from autoflow.models import Item
+    from autoflow.processors.summarize import SummarizeProcessor
+
+    items = SummarizeProcessor().process([Item(title="Only a title", url="https://x")])
+    assert items[0].summary == ""

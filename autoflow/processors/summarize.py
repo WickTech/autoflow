@@ -14,6 +14,8 @@ class SummarizeProcessor(Processor):
     def process(self, items: list[Item]) -> list[Item]:
         max_sentences = int(self.config.get("max_sentences", 2))
         for item in items:
-            text = item.content or item.title
-            item.summary = llm.summarize(text, max_sentences=max_sentences)
+            # No body means nothing to summarize: restating the title as a
+            # "summary" (or paying an LLM to) adds noise, not information.
+            if item.content.strip():
+                item.summary = llm.summarize(item.content, max_sentences=max_sentences)
         return items
