@@ -41,7 +41,7 @@ sinks:
     format: html
 
   - type: email
-    to: [${SMTP_USERNAME}]
+    to: ["${SMTP_USERNAME}"]
     subject: "AI Digest"
     host: ${SMTP_HOST}
     port: 587

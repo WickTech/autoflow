@@ -14,9 +14,9 @@ for _stream in (sys.stdout, sys.stderr):
 
 # Imported after the reconfigure() above so plugin import side effects can't
 # print before stdout is UTF-8. E402 is deliberate here.
-from .log import configure as configure_logging  # noqa: E402
-from .pipeline import PipelineConfig, run_pipeline, validate_config  # noqa: E402
-from .registry import PROCESSORS, SINKS, SOURCES  # noqa: E402
+from .log import configure as configure_logging
+from .pipeline import PipelineConfig, run_pipeline, validate_config
+from .registry import PROCESSORS, SINKS, SOURCES
 
 app = typer.Typer(help="autoflow — pluggable content automation (sources → processors → sinks).")
 

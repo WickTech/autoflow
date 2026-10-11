@@ -54,9 +54,12 @@ def _env_float(name: str, default: float) -> float:
 
 _SENT_RE = re.compile(r"(?<=[.!?])\s+")
 _WORD_RE = re.compile(r"[a-z']+")
-_STOP = set(
-    "the a an and or but if then of to in on at for with by is are was were be been "
-    "this that these those it its as from has have had will would can could".split()
+_STOP = frozenset(
+    {
+        "the", "a", "an", "and", "or", "but", "if", "then", "of", "to", "in", "on", "at", "for",
+        "with", "by", "is", "are", "was", "were", "be", "been", "this", "that", "these", "those", "it",
+        "its", "as", "from", "has", "have", "had", "will", "would", "can", "could"
+    }
 )
 
 
