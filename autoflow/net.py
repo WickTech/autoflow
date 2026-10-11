@@ -24,6 +24,15 @@ USER_AGENT = "autoflow/0.1 (+https://github.com/WickTech/autoflow)"
 # Transient by definition — anything else is a real error and fails fast.
 RETRY_STATUS = frozenset({408, 425, 429, 500, 502, 503, 504})
 
+# A POST is not idempotent: Slack/Discord/Telegram will happily post the same
+# message twice. Only retry when the server signals it did NOT act on the
+# request (rate limited / unavailable / timed out waiting for it), never on a
+# 500/502/504 or a read timeout, where the message may already have landed.
+POST_RETRY_STATUS = frozenset({408, 425, 429, 503})
+
+# Failures that happen before the request reaches the server.
+_NOT_SENT = (httpx.ConnectError, httpx.ConnectTimeout, httpx.PoolTimeout)
+
 DEFAULT_RETRIES = 3
 DEFAULT_BACKOFF = 0.5
 DEFAULT_TIMEOUT = 20.0
@@ -72,6 +81,8 @@ def _request(
 ) -> httpx.Response:
     merged = {"User-Agent": USER_AGENT, **(headers or {})}
     attempts = max(1, retries + 1)
+    idempotent = method == "GET"
+    retry_status = RETRY_STATUS if idempotent else POST_RETRY_STATUS
     last_error: Exception | None = None
     resp: httpx.Response | None = None
 
@@ -92,8 +103,10 @@ def _request(
                 )
         except httpx.TransportError as exc:  # connect / read / timeout
             last_error, resp = exc, None
+            if not idempotent and not isinstance(exc, _NOT_SENT):
+                raise  # may have been delivered — retrying risks a duplicate
         else:
-            if getattr(resp, "status_code", None) not in RETRY_STATUS:
+            if getattr(resp, "status_code", None) not in retry_status:
                 return resp
 
         if attempt == attempts - 1:
@@ -171,10 +184,10 @@ def post(
     retries: int = DEFAULT_RETRIES,
     backoff: float = DEFAULT_BACKOFF,
 ) -> httpx.Response:
-    """POST ``url``, retrying transient failures.
+    """POST ``url``, retrying only failures where the request was not processed.
 
-    Safe to retry: every sink that uses this posts an idempotent digest payload,
-    and the alternative (one 503 defers the whole run) is strictly worse.
+    Chat webhooks don't deduplicate, so a retry after a 500 or a read timeout
+    can post the digest twice. See ``POST_RETRY_STATUS`` and ``_NOT_SENT``.
     """
     return _request(
         "POST", url, json=json, headers=headers,

@@ -141,3 +141,35 @@ def test_raise_for_status_redacts_the_url():
 
 def test_raise_for_status_passes_success_through():
     net.raise_for_status(httpx.Response(200, request=httpx.Request("GET", URL)))
+
+
+@pytest.mark.parametrize("status", [500, 502, 504])
+def test_post_does_not_retry_ambiguous_server_errors(monkeypatch, status):
+    calls = _sequence(monkeypatch, _response(status), _response(200), method="post")
+    assert net.post(URL, json={}).status_code == status
+    assert len(calls) == 1, "the message may already have been delivered"
+
+
+def test_post_does_not_retry_a_read_timeout(monkeypatch):
+    calls = _sequence(monkeypatch, httpx.ReadTimeout("slow"), _response(200), method="post")
+    with pytest.raises(httpx.ReadTimeout):
+        net.post(URL, json={})
+    assert len(calls) == 1
+
+
+def test_post_retries_when_the_request_never_reached_the_server(monkeypatch):
+    calls = _sequence(monkeypatch, httpx.ConnectError("refused"), _response(200), method="post")
+    assert net.post(URL, json={}).status_code == 200
+    assert len(calls) == 2
+
+
+def test_post_retries_rate_limits(monkeypatch):
+    calls = _sequence(monkeypatch, _response(429), _response(200), method="post")
+    assert net.post(URL, json={}).status_code == 200
+    assert len(calls) == 2
+
+
+def test_get_still_retries_500s(monkeypatch):
+    calls = _sequence(monkeypatch, _response(500), _response(200))
+    assert net.get(URL).status_code == 200
+    assert len(calls) == 2
