@@ -111,3 +111,65 @@ def test_post_does_not_retry_client_errors(monkeypatch):
     calls = _sequence(monkeypatch, _response(400), method="post")
     assert net.post(URL, json={}).status_code == 400
     assert len(calls) == 1, "a malformed payload will not fix itself"
+
+
+TOKEN_URL = "https://api.telegram.org/bot123456:AAHsecretTOKENvalue/sendMessage?key=abc"
+
+
+def test_redact_url_masks_token_segments_and_drops_query():
+    redacted = net._redact_url(TOKEN_URL)
+    assert "AAHsecret" not in redacted and "key=abc" not in redacted
+    assert redacted == "https://api.telegram.org/***/sendMessage"
+
+
+def test_retry_warning_does_not_log_the_secret_url(monkeypatch, caplog):
+    _sequence(monkeypatch, _response(503), _response(200), method="post")
+    with caplog.at_level("WARNING", logger="autoflow"):
+        net.post(TOKEN_URL, json={})
+    assert "AAHsecret" not in caplog.text
+    assert all("AAHsecret" not in str(r.__dict__.get("url", "")) for r in caplog.records)
+
+
+def test_raise_for_status_redacts_the_url():
+    resp = httpx.Response(401, request=httpx.Request("POST", TOKEN_URL))
+    with pytest.raises(httpx.HTTPStatusError) as excinfo:
+        net.raise_for_status(resp)
+    assert "AAHsecret" not in str(excinfo.value)
+    assert "401" in str(excinfo.value)
+    assert excinfo.value.response is resp
+
+
+def test_raise_for_status_passes_success_through():
+    net.raise_for_status(httpx.Response(200, request=httpx.Request("GET", URL)))
+
+
+@pytest.mark.parametrize("status", [500, 502, 504])
+def test_post_does_not_retry_ambiguous_server_errors(monkeypatch, status):
+    calls = _sequence(monkeypatch, _response(status), _response(200), method="post")
+    assert net.post(URL, json={}).status_code == status
+    assert len(calls) == 1, "the message may already have been delivered"
+
+
+def test_post_does_not_retry_a_read_timeout(monkeypatch):
+    calls = _sequence(monkeypatch, httpx.ReadTimeout("slow"), _response(200), method="post")
+    with pytest.raises(httpx.ReadTimeout):
+        net.post(URL, json={})
+    assert len(calls) == 1
+
+
+def test_post_retries_when_the_request_never_reached_the_server(monkeypatch):
+    calls = _sequence(monkeypatch, httpx.ConnectError("refused"), _response(200), method="post")
+    assert net.post(URL, json={}).status_code == 200
+    assert len(calls) == 2
+
+
+def test_post_retries_rate_limits(monkeypatch):
+    calls = _sequence(monkeypatch, _response(429), _response(200), method="post")
+    assert net.post(URL, json={}).status_code == 200
+    assert len(calls) == 2
+
+
+def test_get_still_retries_500s(monkeypatch):
+    calls = _sequence(monkeypatch, _response(500), _response(200))
+    assert net.get(URL).status_code == 200
+    assert len(calls) == 2

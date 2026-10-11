@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pytest
 
-from autoflow.sources.rss import RssSource
+from autoflow.sources.rss import RssSource, html_to_text
 
 SAMPLE = str(Path(__file__).parent.parent / "examples" / "sample-feed.xml")
 
@@ -40,3 +40,53 @@ def test_entity_expansion_is_rejected(tmp_path):
     )
     with pytest.raises(EntitiesForbidden):
         RssSource(url=str(bomb)).fetch()
+
+
+HNRSS_ITEM = """<?xml version="1.0"?>
+<rss version="2.0"><channel><item>
+<title>Show HN: Tom &amp;amp; Jerry</title>
+<link>https://example.com/a</link>
+<description><![CDATA[
+<p>Article URL: <a href="https://example.com/a">https://example.com/a</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=1">https://news.ycombinator.com/item?id=1</a></p>
+<p>Points: 22</p>
+<p># Comments: 7</p>
+]]></description>
+</item></channel></rss>"""
+
+
+def test_hnrss_metadata_is_not_treated_as_content(tmp_path):
+    feed = tmp_path / "hn.xml"
+    feed.write_text(HNRSS_ITEM, encoding="utf-8")
+    (item,) = RssSource(url=str(feed)).fetch()
+    assert item.content == ""
+    assert "<" not in item.title and item.title == "Show HN: Tom & Jerry"
+    assert item.metadata == {
+        "comments_url": "https://news.ycombinator.com/item?id=1",
+        "points": "22",
+        "comments": "7",
+    }
+
+
+def test_html_descriptions_are_flattened_to_text():
+    text = html_to_text(
+        "<p>First &amp; <b>bold</b>.</p><script>alert(1)</script><p>Second\n  line.</p>"
+    )
+    assert text == "First & bold.\nSecond line."
+
+
+def test_plain_text_passes_through_unchanged():
+    assert html_to_text("  no markup here ") == "no markup here"
+
+
+def test_one_broken_feed_does_not_sink_the_others(tmp_path, caplog):
+    missing = str(tmp_path / "gone.xml")
+    with caplog.at_level("WARNING", logger="autoflow"):
+        items = RssSource(urls=[missing, SAMPLE]).fetch()
+    assert len(items) == 3
+    assert "skipping" in caplog.text and "gone.xml" in caplog.text
+
+
+def test_all_feeds_failing_still_fails_the_run(tmp_path):
+    with pytest.raises(OSError):
+        RssSource(urls=[str(tmp_path / "a.xml"), str(tmp_path / "b.xml")]).fetch()

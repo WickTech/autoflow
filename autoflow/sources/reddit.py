@@ -10,7 +10,7 @@ from datetime import datetime, timezone
 from .. import net
 from ..models import Item
 from ..registry import source
-from .base import Source
+from .base import Source, fetch_each
 
 _BASE = "https://www.reddit.com"
 
@@ -39,12 +39,12 @@ class RedditSource(Source):
         time = self.config.get("time", "day")
         limit = int(self.config.get("limit", 25))
 
-        items: list[Item] = []
-        per_sub = max(1, limit // len(subs)) if subs else limit
-
-        for sub in subs:
-            items.extend(self._fetch_sub(sub, sort=sort, time=time, limit=per_sub))
-
+        per_sub = max(1, limit // len(subs))
+        items = fetch_each(
+            subs,
+            lambda sub: self._fetch_sub(sub, sort=sort, time=time, limit=per_sub),
+            label=lambda sub: f"r/{sub}",
+        )
         return items[:limit]
 
     def _fetch_sub(self, subreddit: str, *, sort: str, time: str, limit: int) -> list[Item]:

@@ -16,14 +16,38 @@ from .models import Item
 
 STYLES = ("slack", "markdown", "html", "plain")
 
+# Feed titles and summaries are untrusted text. Unescaped, a title like
+# "<!channel>" pings a whole Slack channel, and a stray "_" or "[" makes
+# Telegram reject the message outright.
+_SLACK_ESCAPES = str.maketrans({"&": "&amp;", "<": "&lt;", ">": "&gt;"})
+_SLACK_URL_ESCAPES = str.maketrans({"|": "%7C", "<": "%3C", ">": "%3E"})
+_MD_TITLE_ESCAPES = str.maketrans({"\\": "\\\\", "[": "\\[", "]": "\\]"})
+_MD_TEXT_ESCAPES = str.maketrans(
+    {"\\": "\\\\", "_": "\\_", "*": "\\*", "`": "\\`", "[": "\\[", "]": "\\]"}
+)
+_MD_URL_ESCAPES = str.maketrans({"(": "%28", ")": "%29", " ": "%20", "<": "%3C", ">": "%3E"})
+
+
+def _text(value: str, style: str) -> str:
+    """Escape free text (titles without a URL, summaries) for ``style``."""
+    if style == "html":
+        return escape(value)
+    if style == "slack":
+        return value.translate(_SLACK_ESCAPES)
+    if style == "markdown":
+        return value.translate(_MD_TEXT_ESCAPES)
+    return value
+
 
 def _link(item: Item, style: str) -> str:
     if not item.url:
-        return escape(item.title) if style == "html" else item.title
+        return _text(item.title, style)
     if style == "slack":
-        return f"<{item.url}|{item.title}>"
+        url = item.url.translate(_SLACK_URL_ESCAPES)
+        return f"<{url}|{item.title.translate(_SLACK_ESCAPES)}>"
     if style == "markdown":
-        return f"[{item.title}]({item.url})"
+        url = item.url.translate(_MD_URL_ESCAPES)
+        return f"[{item.title.translate(_MD_TITLE_ESCAPES)}]({url})"
     if style == "html":
         return f'<a href="{escape(item.url, quote=True)}">{escape(item.title)}</a>'
     return f"{item.title} — {item.url}"
@@ -38,8 +62,7 @@ def render_text(items: list[Item], *, header: str = "", style: str = "slack") ->
     for item in items:
         bullet = f"• {_link(item, style)}"
         if item.summary:
-            summary = escape(item.summary) if style == "html" else item.summary
-            bullet += f" — {summary}"
+            bullet += f" — {_text(item.summary, style)}"
         lines.append(bullet)
     return "\n".join(lines)
 

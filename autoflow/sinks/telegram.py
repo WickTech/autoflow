@@ -70,13 +70,15 @@ class TelegramSink(Sink):
             if _PARSE_MODES[style]:
                 payload["parse_mode"] = _PARSE_MODES[style]
 
-            resp = net.post(
-                f"{_API}/bot{token}/sendMessage",
-                json=payload,
-                timeout=float(self.config.get("timeout", net.DEFAULT_TIMEOUT)),
-                retries=int(self.config.get("retries", net.DEFAULT_RETRIES)),
-            )
-            resp.raise_for_status()
+            resp = self._send(token, payload)
+            if "parse_mode" in payload and _is_parse_error(resp):
+                # One malformed title would otherwise fail every future run:
+                # dedup state is only committed after delivery, so the same
+                # item comes back tomorrow. Deliver it unformatted instead.
+                log.warning("telegram rejected the %s markup; resending as plain text", style)
+                payload.pop("parse_mode")
+                resp = self._send(token, payload)
+            net.raise_for_status(resp)
 
         log.info(
             "sent %d item(s) to telegram in %d message(s)",
@@ -84,3 +86,16 @@ class TelegramSink(Sink):
             len(messages),
             extra={"items": len(items), "messages": len(messages)},
         )
+
+    def _send(self, token: str, payload: dict):
+        return net.post(
+            f"{_API}/bot{token}/sendMessage",
+            json=payload,
+            timeout=float(self.config.get("timeout", net.DEFAULT_TIMEOUT)),
+            retries=int(self.config.get("retries", net.DEFAULT_RETRIES)),
+        )
+
+
+def _is_parse_error(resp) -> bool:
+    """Telegram answers malformed markup with 400 "can't parse entities"."""
+    return resp.status_code == 400 and "can't parse entities" in resp.text

@@ -7,6 +7,7 @@ warning, not a crash — the offline path must stay runnable with zero secrets.
 from __future__ import annotations
 
 import smtplib
+import ssl
 from datetime import date
 from email.message import EmailMessage  # stdlib: absolute import, not this module
 
@@ -95,12 +96,32 @@ class EmailSink(Sink):
     def _send(self, message: EmailMessage, host: str, username: str, password: str) -> None:
         port = int(self.config.get("port", DEFAULT_PORT))
         timeout = float(self.config.get("timeout", DEFAULT_TIMEOUT))
-        use_ssl = bool(self.config.get("ssl", False))
+        use_ssl = _flag(self.config.get("ssl", False))
+        use_starttls = not use_ssl and _flag(self.config.get("starttls", True))
+        if username and password and not (use_ssl or use_starttls):
+            raise ValueError(
+                "email sink refuses to send SMTP credentials without TLS: "
+                "set 'starttls: true' (port 587) or 'ssl: true' (port 465)"
+            )
 
-        opener = smtplib.SMTP_SSL if use_ssl else smtplib.SMTP
-        with opener(host, port, timeout=timeout) as server:
-            if not use_ssl and self.config.get("starttls", True):
-                server.starttls()
+        # smtplib's own default context skips certificate and hostname checks,
+        # which would hand the SMTP password to anyone able to intercept the
+        # connection. create_default_context() verifies both.
+        context = ssl.create_default_context()
+        if use_ssl:
+            server_cm = smtplib.SMTP_SSL(host, port, timeout=timeout, context=context)
+        else:
+            server_cm = smtplib.SMTP(host, port, timeout=timeout)
+        with server_cm as server:
+            if use_starttls:
+                server.starttls(context=context)
             if username and password:
                 server.login(username, password)
             server.send_message(message)
+
+
+def _flag(value: object) -> bool:
+    """YAML booleans, tolerating quoted strings like "false" from env refs."""
+    if isinstance(value, str):
+        return value.strip().lower() in {"1", "true", "yes", "on"}
+    return bool(value)
