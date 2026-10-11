@@ -29,8 +29,9 @@ class _FakeServer:
     def __exit__(self, *exc):
         return False
 
-    def starttls(self):
+    def starttls(self, context=None):
         self.started_tls = True
+        self.tls_context = context
 
     def login(self, username, password):
         self.login_args = (username, password)
@@ -45,9 +46,10 @@ def servers(monkeypatch):
     made: list[_FakeServer] = []
 
     def _factory(ssl: bool):
-        def _open(host, port, timeout=None):
+        def _open(host, port, timeout=None, context=None):
             server = _FakeServer(host, port, timeout)
             server.ssl = ssl
+            server.ssl_context = context
             made.append(server)
             return server
 
@@ -127,3 +129,31 @@ def test_no_items_means_no_connection(servers):
 def test_dry_run_does_not_connect(servers):
     EmailSink(**CONFIG, dry_run=True).emit(ITEMS)
     assert servers == []
+
+
+def _verifies(context) -> bool:
+    import ssl as _ssl
+
+    return context is not None and context.verify_mode == _ssl.CERT_REQUIRED and context.check_hostname
+
+
+def test_starttls_verifies_the_server_certificate(servers):
+    EmailSink(**CONFIG).emit(ITEMS)
+    assert _verifies(servers[0].tls_context)
+
+
+def test_implicit_tls_verifies_the_server_certificate(servers):
+    EmailSink(**CONFIG, ssl=True, port=465).emit(ITEMS)
+    assert _verifies(servers[0].ssl_context)
+
+
+def test_credentials_are_never_sent_without_tls(servers):
+    with pytest.raises(ValueError, match="without TLS"):
+        EmailSink(**CONFIG, starttls=False).emit(ITEMS)
+    assert not servers, "must refuse before connecting"
+
+
+def test_quoted_false_disables_starttls_for_unauthenticated_relays(servers):
+    config = {**CONFIG, "starttls": "false", "username": "", "password": ""}
+    EmailSink(**config, **{"from": "bot@example.com"}).emit(ITEMS)
+    assert servers[0].started_tls is False and servers[0].sent
