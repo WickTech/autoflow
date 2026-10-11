@@ -28,8 +28,9 @@ class PipelineConfig:
     sinks: list[dict] = field(default_factory=list)
 
     @classmethod
-    def from_yaml(cls, path: str) -> "PipelineConfig":
-        data = yaml.safe_load(open(path, encoding="utf-8"))
+    def from_yaml(cls, path: str) -> PipelineConfig:
+        with open(path, encoding="utf-8") as fh:
+            data = yaml.safe_load(fh)
         return cls(
             name=data.get("name", "pipeline"),
             source=data["source"],

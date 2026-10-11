@@ -22,4 +22,5 @@ class Item:
     def fingerprint(self) -> str:
         """Stable id used for cross-run deduplication (URL first, else title+content)."""
         basis = self.url or f"{self.title}:{self.content[:200]}"
-        return hashlib.sha1(basis.encode("utf-8")).hexdigest()
+        # Non-cryptographic dedup key; SHA-1 kept so existing fingerprints stay stable.
+        return hashlib.sha1(basis.encode("utf-8"), usedforsecurity=False).hexdigest()  # nosemgrep: insecure-hash-algorithm-sha1
