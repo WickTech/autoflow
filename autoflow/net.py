@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import random
 import time
+from urllib.parse import urlsplit, urlunsplit
 
 import httpx
 
@@ -43,6 +44,19 @@ def _retry_after(resp: httpx.Response) -> float | None:
 def _sleep_for(attempt: int, backoff: float) -> float:
     """Exponential backoff with full jitter, so parallel sources don't sync up."""
     return min(backoff * (2**attempt) * (0.5 + random.random()), _MAX_SLEEP)
+
+
+def _redact_url(url: str) -> str:
+    """Strip query/fragment and mask token-shaped path segments before logging.
+
+    Webhook/bot-token URLs (Slack, Discord, Telegram, ...) carry the secret
+    in the path or query — logging the raw URL leaks it into log output,
+    which bites when secrets come from a local .env instead of a secrets
+    manager that would otherwise mask them.
+    """
+    parts = urlsplit(url)
+    segments = [s if len(s) < 12 else "***" for s in parts.path.split("/")]
+    return urlunsplit((parts.scheme, parts.netloc, "/".join(segments), "", ""))
 
 
 def _request(
@@ -87,13 +101,14 @@ def _request(
 
         wait = _retry_after(resp) if resp is not None else None
         wait = wait if wait is not None else _sleep_for(attempt, backoff)
+        redacted = _redact_url(url)
         log.warning(
             "%s %s failed (%s), retrying in %.1fs",
             method,
-            url,
+            redacted,
             f"HTTP {resp.status_code}" if resp is not None else type(last_error).__name__,
             wait,
-            extra={"attempt": attempt + 1, "of": attempts, "url": url},
+            extra={"attempt": attempt + 1, "of": attempts, "url": redacted},
         )
         time.sleep(wait)
 
@@ -104,6 +119,27 @@ def _request(
 
     assert last_error is not None
     raise last_error
+
+
+def raise_for_status(resp: httpx.Response) -> None:
+    """Like ``resp.raise_for_status()``, but with the secret-bearing URL
+    redacted first.
+
+    ``httpx.HTTPStatusError.__str__`` embeds the full request URL, so a plain
+    ``raise_for_status()`` on a webhook/bot-token URL leaks the same secret
+    the retry-logging redaction was built to hide — and it fires on the most
+    common failure (a revoked/bad token), not just transient retries, with
+    the traceback going straight to stderr/CI logs uncaught.
+    """
+    try:
+        resp.raise_for_status()
+    except httpx.HTTPStatusError as exc:
+        redacted = _redact_url(str(exc.request.url))
+        raise httpx.HTTPStatusError(
+            f"{exc.response.status_code} {exc.response.reason_phrase} for url '{redacted}'",
+            request=exc.request,
+            response=exc.response,
+        ) from None
 
 
 def get(

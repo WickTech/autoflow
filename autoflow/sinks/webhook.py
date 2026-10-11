@@ -44,5 +44,5 @@ class WebhookSink(Sink):
             timeout=float(self.config.get("timeout", net.DEFAULT_TIMEOUT)),
             retries=int(self.config.get("retries", net.DEFAULT_RETRIES)),
         )
-        resp.raise_for_status()
+        net.raise_for_status(resp)
         log.info("posted %d item(s) to webhook", len(items), extra={"items": len(items)})
