@@ -77,3 +77,16 @@ def test_html_descriptions_are_flattened_to_text():
 
 def test_plain_text_passes_through_unchanged():
     assert html_to_text("  no markup here ") == "no markup here"
+
+
+def test_one_broken_feed_does_not_sink_the_others(tmp_path, caplog):
+    missing = str(tmp_path / "gone.xml")
+    with caplog.at_level("WARNING", logger="autoflow"):
+        items = RssSource(urls=[missing, SAMPLE]).fetch()
+    assert len(items) == 3
+    assert "skipping" in caplog.text and "gone.xml" in caplog.text
+
+
+def test_all_feeds_failing_still_fails_the_run(tmp_path):
+    with pytest.raises(OSError):
+        RssSource(urls=[str(tmp_path / "a.xml"), str(tmp_path / "b.xml")]).fetch()

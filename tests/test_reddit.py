@@ -67,3 +67,26 @@ def test_multiple_subreddits(mock_get):
 def test_missing_subreddits_raises():
     with pytest.raises(ValueError, match="subreddits"):
         RedditSource().fetch()
+
+
+@patch("autoflow.sources.reddit.net.get")
+def test_one_failing_subreddit_is_skipped(mock_get):
+    import httpx
+
+    def _get(url, **_kwargs):
+        if "/r/private/" in url:
+            raise httpx.ConnectError("boom")
+        return _make_response([SAMPLE_POST])
+
+    mock_get.side_effect = _get
+    items = RedditSource(subreddits=["private", "MachineLearning"]).fetch()
+    assert [i.source for i in items] == ["r/MachineLearning"]
+
+
+@patch("autoflow.sources.reddit.net.get")
+def test_every_subreddit_failing_raises(mock_get):
+    import httpx
+
+    mock_get.side_effect = httpx.ConnectError("boom")
+    with pytest.raises(httpx.ConnectError):
+        RedditSource(subreddits=["a", "b"]).fetch()

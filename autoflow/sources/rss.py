@@ -20,7 +20,7 @@ except ImportError:  # pragma: no cover
 from .. import net
 from ..models import Item
 from ..registry import source
-from .base import Source
+from .base import Source, fetch_each
 
 _ATOM = "{http://www.w3.org/2005/Atom}"
 
@@ -102,9 +102,9 @@ class RssSource(Source):
     def fetch(self) -> list[Item]:
         urls = self.config.get("urls") or ([self.config["url"]] if "url" in self.config else [])
         limit = int(self.config.get("limit", 20))
-        items: list[Item] = []
-        for url in urls:
-            items.extend(self._parse(self._load(url), url))
+        items = fetch_each(
+            urls, lambda url: self._parse(self._load(url), url), label=net._redact_url
+        )
         return items[:limit] if limit else items
 
     def _load(self, url: str) -> str:
