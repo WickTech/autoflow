@@ -97,3 +97,31 @@ def test_api_errors_propagate(monkeypatch):
     _stub_post(monkeypatch, status=500)
     with pytest.raises(httpx.HTTPStatusError):
         TelegramSink(**CONFIG).emit(ITEMS)
+
+
+def test_markup_rejection_is_resent_as_plain_text(monkeypatch):
+    calls: list[dict] = []
+    replies = [
+        httpx.Response(
+            400,
+            json={"ok": False, "description": "Bad Request: can't parse entities: x"},
+            request=httpx.Request("POST", "https://api.telegram.org"),
+        ),
+        httpx.Response(200, request=httpx.Request("POST", "https://api.telegram.org")),
+    ]
+
+    def _fake_post(url, **kwargs):
+        calls.append({"url": url, **kwargs, "json": dict(kwargs["json"])})
+        return replies.pop(0)
+
+    monkeypatch.setattr(telegram_mod.net, "post", _fake_post)
+    TelegramSink(**CONFIG, format="markdown").emit(ITEMS)
+    assert len(calls) == 2
+    assert calls[0]["json"]["parse_mode"] == "Markdown"
+    assert "parse_mode" not in calls[1]["json"]
+
+
+def test_other_400s_are_not_masked(monkeypatch):
+    _stub_post(monkeypatch, status=400)
+    with pytest.raises(httpx.HTTPStatusError):
+        TelegramSink(**CONFIG).emit(ITEMS)

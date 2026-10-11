@@ -87,3 +87,25 @@ def test_oversized_line_after_normal_lines_flushes_first():
     pieces = render.chunk("short\n" + "y" * 12, 10)
     assert pieces[0] == "short"
     assert all(len(piece) <= 10 for piece in pieces)
+
+
+def test_slack_style_neutralises_mentions_and_link_breakers():
+    nasty = Item(title="<!channel> win > all", url="https://x.test/a|b", summary="<@U123> & co")
+    out = render.render_text([nasty], style="slack")
+    assert "<!channel>" not in out and "<@U123>" not in out
+    assert out == "• <https://x.test/a%7Cb|&lt;!channel&gt; win &gt; all> — &lt;@U123&gt; &amp; co"
+
+
+def test_markdown_style_escapes_untrusted_text():
+    nasty = Item(
+        title="my_var [beta]", url="https://x.test/wiki/Foo_(bar)", summary="use *args and _kw_"
+    )
+    out = render.render_text([nasty], style="markdown")
+    assert out == (
+        "• [my_var \\[beta\\]](https://x.test/wiki/Foo_%28bar%29) — use \\*args and \\_kw\\_"
+    )
+
+
+def test_plain_style_is_left_verbatim():
+    item = Item(title="a_b <c>", url="https://x.test", summary="*d*")
+    assert render.render_text([item], style="plain") == "• a_b <c> — https://x.test — *d*"
