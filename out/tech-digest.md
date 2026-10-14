@@ -1,21 +1,13 @@
-# AI Tech Digest — 2026-10-13
+# AI Tech Digest — 2026-10-14
 
-## [We turned EmbeddingGemma 2 into a speech-to-text model](https://eg2.haku.sh/)
-
-<sub>source: https://hnrss.org/frontpage</sub>
-
-## [Show HN: Use your OpenAI subscription to create audiobooks](https://pdftomp3.com/connect-ai/)
+## [TV4 postpones show after AI agent erases edited material](https://swedenherald.com/article/tv4-postpones-the-challenge-until-2027-after-technical-failure-erases-edited-footage)
 
 <sub>source: https://hnrss.org/frontpage</sub>
 
-## [Character.ai has initiated voluntary Chapter 11 bankruptcy](https://blog.character.ai/an-update-on-character-ai/)
+## [AI Laser Locking for Quantum Computers: How QuEra Automates It](https://www.quera.com/blog-posts/holding-the-light-teaching-an-ai-to-lock-and-tune-our-quantum-computers-lasers)
 
 <sub>source: https://hnrss.org/frontpage</sub>
 
-## [AI is a tool and using it well takes skill](https://yyhh.org/blog/2026/10/ai-is-a-tool/)
-
-<sub>source: https://hnrss.org/frontpage</sub>
-
-## [Intel D270 GPU AI Accelerator–Up to 480 GB LPDDR5X](https://www.intel.com/content/www/us/en/products/details/discrete-gpus/data-center-gpu/d-series.html)
+## [Redesigning source control at Anthropic](https://www.anthropic.com/engineering/redesigning-source-control)
 
 <sub>source: https://hnrss.org/frontpage</sub>
