@@ -1,13 +1,15 @@
-# AI Tech Digest — 2026-10-14
+# AI Tech Digest — 2026-10-15
 
-## [TV4 postpones show after AI agent erases edited material](https://swedenherald.com/article/tv4-postpones-the-challenge-until-2027-after-technical-failure-erases-edited-footage)
-
-<sub>source: https://hnrss.org/frontpage</sub>
-
-## [AI Laser Locking for Quantum Computers: How QuEra Automates It](https://www.quera.com/blog-posts/holding-the-light-teaching-an-ai-to-lock-and-tune-our-quantum-computers-lasers)
+## [Aidlc: Adaptive workflow steering rules for AI coding agents](https://github.com/awslabs/aidlc-workflows)
 
 <sub>source: https://hnrss.org/frontpage</sub>
 
-## [Redesigning source control at Anthropic](https://www.anthropic.com/engineering/redesigning-source-control)
+## [Show HN: Petal, open-source CoScreen/ScreenHero finally free](https://petal.live/)
+
+It felt like magic while we had it. We weren't the only ones.
+
+<sub>source: https://hnrss.org/frontpage</sub>
+
+## [Containment and monitoring failures are to blame for AI hacking reports: experts](https://www.csoonline.com/article/4234854/ai-agents-arent-going-rogue-frontier-labs-are-skipping-security-basics.html)
 
 <sub>source: https://hnrss.org/frontpage</sub>
