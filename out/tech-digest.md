@@ -1,9 +1,17 @@
-# AI Tech Digest — 2026-10-26
+# AI Tech Digest — 2026-10-27
 
-## [Anthropic S-1](https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm)
+## [Wikipedia's Cleanup of AI-Generated Content](https://spectrum.ieee.org/wikipedia-wikiproject-ai-writing-cleanup)
 
 <sub>source: https://hnrss.org/frontpage</sub>
 
-## [Brown student maps the hidden global labor powering AI](https://www.brown.edu/news/2026-10-26/ai-data-workers)
+## [AI promised less work. I've never worked more](https://oioannou.com/blog/ai-promised-less-work/)
+
+<sub>source: https://hnrss.org/frontpage</sub>
+
+## [The Mythical Man-Month in the Age of AI](https://j11g.com/the-mythical-man-month-in-the-age-of-ai)
+
+<sub>source: https://hnrss.org/frontpage</sub>
+
+## [Cross-request KV cache exposure in the GLM-5.3 Workers AI model (155 responses)](https://blog.cloudflare.com/kv-cache-exposure-remediation/)
 
 <sub>source: https://hnrss.org/frontpage</sub>
