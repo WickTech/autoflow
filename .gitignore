@@ -12,3 +12,4 @@ venv/
 out/
 .DS_Store
 .claude-flow/
+.claude/
