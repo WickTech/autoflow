@@ -1,9 +1,13 @@
-# AI Tech Digest — 2026-10-29
+# AI Tech Digest — 2026-10-30
 
-## [I Used AI to Fake a Scientific Paper. Here's What Happened](https://spectrum.ieee.org/ai-generated-scientific-papers)
+## [Neal Stephenson on AI and What Comes Next [video]](https://www.youtube.com/watch?v=Ii-aeW5pHPQ)
 
 <sub>source: https://hnrss.org/frontpage</sub>
 
-## [Claude Code regularly sends each background agent’s transcript to its model](https://gist.github.com/flamerix-ai/c3905705cc4205e5de3011fa2e74efce)
+## [We ran AI agent swarms in Minecraft and Mindustry](https://labs.ycombinator.com/projects/games/index.html)
+
+<sub>source: https://hnrss.org/frontpage</sub>
+
+## [A tiny world model running games on a Raspberry Pi Pico 2 W](https://github.com/SheepSeb/tinyworldformer)
 
 <sub>source: https://hnrss.org/frontpage</sub>
