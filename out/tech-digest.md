@@ -1,13 +1,11 @@
-# AI Tech Digest — 2026-11-06
+# AI Tech Digest — 2026-11-09
 
-## [University libraries are being swarmed by AI bots, putting public access at risk](https://www.cbc.ca/news/world/university-libraries-ai-data-scraping-bots-9.7408287)
+## [ChatGPT Desktop forwards your SSH agent to remote machines](https://news.ycombinator.com/item?id=50422628)
 
-<sub>source: https://hnrss.org/frontpage</sub>
-
-## [Mbodi AI (YC P25) Is Hiring Research and Robotic Engineers](https://www.ycombinator.com/companies/mbodi-ai/jobs)
+That means it can push to your private repos on GitHub, for example. Proof: https://github.com/openai/codex/pull/28131#discussion_r3410013180
 
 <sub>source: https://hnrss.org/frontpage</sub>
 
-## [AI for scientific discovery: How researchers use Claude](https://www.anthropic.com/research/how-researchers-use-claude)
+## [I'm not convinced the AI bubble exists](https://matteoraso.github.io/im-not-convinced-the-ai-bubble-exists.html#im-not-convinced-the-ai-bubble-exists)
 
 <sub>source: https://hnrss.org/frontpage</sub>
