@@ -1,11 +1,13 @@
-# AI Tech Digest — 2026-11-09
+# AI Tech Digest — 2026-11-10
 
-## [ChatGPT Desktop forwards your SSH agent to remote machines](https://news.ycombinator.com/item?id=50422628)
-
-That means it can push to your private repos on GitHub, for example. Proof: https://github.com/openai/codex/pull/28131#discussion_r3410013180
+## [Wake me up when AI can...](https://stoppels.ch/2026/10/03/wake-me-up-when-ai-can.html)
 
 <sub>source: https://hnrss.org/frontpage</sub>
 
-## [I'm not convinced the AI bubble exists](https://matteoraso.github.io/im-not-convinced-the-ai-bubble-exists.html#im-not-convinced-the-ai-bubble-exists)
+## [Anthropic launches roadshow for proposed initial public offering](https://www.anthropic.com/news/roadshow-launch)
+
+<sub>source: https://hnrss.org/frontpage</sub>
+
+## [Fireworks AI security breach impacts Notion and their customers](https://www.notion.com/help/security-incident-involving-a-third-party-ai-vendor)
 
 <sub>source: https://hnrss.org/frontpage</sub>
