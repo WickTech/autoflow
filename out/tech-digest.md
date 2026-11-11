@@ -1,13 +1,13 @@
-# AI Tech Digest — 2026-11-10
+# AI Tech Digest — 2026-11-11
 
-## [Wake me up when AI can...](https://stoppels.ch/2026/10/03/wake-me-up-when-ai-can.html)
-
-<sub>source: https://hnrss.org/frontpage</sub>
-
-## [Anthropic launches roadshow for proposed initial public offering](https://www.anthropic.com/news/roadshow-launch)
+## [Atuin Threads: All your agent sessions on every machine](https://blog.atuin.sh/threads-agent-sessions/)
 
 <sub>source: https://hnrss.org/frontpage</sub>
 
-## [Fireworks AI security breach impacts Notion and their customers](https://www.notion.com/help/security-incident-involving-a-third-party-ai-vendor)
+## [Google SWE points 48 AI agents at NASA Lidar, finds unmapped Maya pyramid in 72h](https://pietromiotti.com/latest/maya-site/?maya)
+
+<sub>source: https://hnrss.org/frontpage</sub>
+
+## [Tinfoil (YC P25) is hiring an applied AI security engineer in San Francisco](https://news.ycombinator.com/item?id=50452404)
 
 <sub>source: https://hnrss.org/frontpage</sub>
