@@ -173,3 +173,71 @@ def test_get_still_retries_500s(monkeypatch):
     calls = _sequence(monkeypatch, _response(500), _response(200))
     assert net.get(URL).status_code == 200
     assert len(calls) == 2
+
+
+# --- redirect hardening (SSRF) -------------------------------------------------
+
+def _redirect(status: int, location: str) -> httpx.Response:
+    return _response(status, location=location)
+
+
+def test_never_uses_httpx_follow_redirects(monkeypatch):
+    calls = _sequence(monkeypatch, _response(200))
+    net.get(URL)
+    assert calls[0]["follow_redirects"] is False
+
+
+def test_same_host_https_upgrade_redirect_is_followed(monkeypatch):
+    calls = _sequence(
+        monkeypatch,
+        _redirect(301, "https://example.com/feed.xml"),
+        _response(200),
+    )
+    assert net.get("http://example.com/feed").status_code == 200
+    assert [c["url"] for c in calls] == ["http://example.com/feed", "https://example.com/feed.xml"]
+
+
+def test_www_and_relative_redirects_are_followed(monkeypatch):
+    calls = _sequence(
+        monkeypatch,
+        _redirect(302, "https://www.example.com/feed"),
+        _redirect(307, "/new/feed"),
+        _response(200),
+    )
+    assert net.get(URL).status_code == 200
+    assert calls[-1]["url"] == "https://www.example.com/new/feed"
+
+
+@pytest.mark.parametrize(
+    "target",
+    [
+        "http://169.254.169.254/latest/meta-data/",
+        "https://evil.example.org/feed",
+        "file:///etc/passwd",
+        "http://example.com/feed",  # https -> http downgrade
+    ],
+)
+def test_unsafe_redirects_are_refused_and_not_retried(monkeypatch, target):
+    calls = _sequence(monkeypatch, _redirect(302, target), _response(200))
+    with pytest.raises(net.UnsafeRedirect):
+        net.get(URL, retries=3)
+    assert len(calls) == 1  # refused before any second request
+
+
+def test_unsafe_redirect_is_an_httpx_error():
+    assert issubclass(net.UnsafeRedirect, httpx.HTTPError)
+
+
+def test_redirect_loop_raises_too_many_redirects(monkeypatch):
+    _sequence(monkeypatch, *[_redirect(302, URL)] * (net.MAX_REDIRECTS + 1))
+    with pytest.raises(httpx.TooManyRedirects):
+        net.get(URL, retries=0)
+
+
+def test_post_does_not_follow_redirects(monkeypatch):
+    calls = _sequence(monkeypatch, _redirect(307, "https://evil.example.org/"), method="post")
+    resp = net.post(URL, json={"a": 1})
+    assert resp.status_code == 307
+    assert calls[0]["follow_redirects"] is False
+    with pytest.raises(httpx.HTTPStatusError):
+        net.raise_for_status(resp)
