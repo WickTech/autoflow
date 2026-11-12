@@ -13,7 +13,7 @@ from __future__ import annotations
 
 import random
 import time
-from urllib.parse import urlsplit, urlunsplit
+from urllib.parse import urljoin, urlsplit, urlunsplit
 
 import httpx
 
@@ -32,6 +32,11 @@ POST_RETRY_STATUS = frozenset({408, 425, 429, 503})
 
 # Failures that happen before the request reaches the server.
 _NOT_SENT = (httpx.ConnectError, httpx.ConnectTimeout, httpx.PoolTimeout)
+
+# Redirects are followed by hand (GET only) so every hop can be vetted; see
+# :func:`_check_redirect`. POSTs never follow redirects.
+MAX_REDIRECTS = 5
+_REDIRECT_STATUS = frozenset({301, 302, 303, 307, 308})
 
 DEFAULT_RETRIES = 3
 DEFAULT_BACKOFF = 0.5
@@ -68,6 +73,50 @@ def _redact_url(url: str) -> str:
     return urlunsplit((parts.scheme, parts.netloc, "/".join(segments), "", ""))
 
 
+class UnsafeRedirect(httpx.HTTPError):
+    """A redirect was refused (SSRF hardening). Not retried; callers that catch
+    ``httpx.HTTPError`` (the source fetch path) treat it as a failed fetch."""
+
+
+def _site(host: str | None) -> str:
+    host = (host or "").lower().rstrip(".")
+    return host.removeprefix("www.")
+
+
+def _check_redirect(current: str, target: str) -> None:
+    """Allow only http(s) redirects that stay on the same site.
+
+    Legit feeds redirect http->https, apex<->www and to a new path; anything
+    else (another host, a non-http scheme, an https->http downgrade) is refused
+    so a hostile or compromised feed can't point us at internal services.
+    """
+    cur, new = urlsplit(current), urlsplit(target)
+    if new.scheme not in ("http", "https"):
+        raise UnsafeRedirect(f"refusing redirect to scheme {new.scheme!r}")
+    if cur.scheme == "https" and new.scheme == "http":
+        raise UnsafeRedirect("refusing https->http redirect downgrade")
+    if _site(cur.hostname) != _site(new.hostname):
+        raise UnsafeRedirect(
+            f"refusing cross-host redirect to {_redact_url(target)} (from {_redact_url(current)})"
+        )
+
+
+def _get_following(url: str, *, params, headers, timeout) -> httpx.Response:
+    """GET with manual, vetted redirect following (no ``follow_redirects``)."""
+    current = url
+    for _ in range(MAX_REDIRECTS + 1):
+        resp = httpx.get(
+            current, params=params, headers=headers, timeout=timeout, follow_redirects=False
+        )
+        location = resp.headers.get("location") if hasattr(resp, "headers") else None
+        if getattr(resp, "status_code", None) not in _REDIRECT_STATUS or not location:
+            return resp
+        target = urljoin(current, location)
+        _check_redirect(current, target)
+        current, params = target, None  # Location already carries its own query
+    raise httpx.TooManyRedirects(f"exceeded {MAX_REDIRECTS} redirects for {_redact_url(url)}")
+
+
 def _request(
     method: str,
     url: str,
@@ -89,9 +138,7 @@ def _request(
     for attempt in range(attempts):
         try:
             if method == "GET":
-                resp = httpx.get(
-                    url, params=params, headers=merged, timeout=timeout, follow_redirects=True
-                )
+                resp = _get_following(url, params=params, headers=merged, timeout=timeout)
             else:
                 resp = httpx.post(
                     url,
@@ -99,7 +146,7 @@ def _request(
                     headers=merged,
                     json=json,
                     timeout=timeout,
-                    follow_redirects=True,
+                    follow_redirects=False,
                 )
         except httpx.TransportError as exc:  # connect / read / timeout
             last_error, resp = exc, None
