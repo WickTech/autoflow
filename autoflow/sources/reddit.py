@@ -59,7 +59,7 @@ class RedditSource(Source):
             timeout=float(self.config.get("timeout", 15.0)),
             retries=int(self.config.get("retries", net.DEFAULT_RETRIES)),
         )
-        resp.raise_for_status()
+        net.raise_for_status(resp)
 
         posts = resp.json().get("data", {}).get("children", [])
         items: list[Item] = []

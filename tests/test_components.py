@@ -92,6 +92,18 @@ def test_seen_store_survives_a_corrupt_file(tmp_path):
     assert json.loads(path.read_text(encoding="utf-8")) == ["x"]
 
 
+def test_seen_store_backs_up_and_warns_on_corrupt_file(tmp_path, caplog):
+    import logging
+
+    path = tmp_path / "state.json"
+    path.write_text("{not json", encoding="utf-8")
+    with caplog.at_level(logging.WARNING, logger="autoflow"):
+        SeenStore(path)
+    assert (tmp_path / "state.json.corrupt").read_text(encoding="utf-8") == "{not json"
+    assert not path.exists()
+    assert any("unreadable" in r.getMessage() for r in caplog.records)
+
+
 def test_summarize_skips_items_without_content():
     from autoflow.models import Item
     from autoflow.processors.summarize import SummarizeProcessor
