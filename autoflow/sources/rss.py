@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import re
 from html.parser import HTMLParser
+from itertools import zip_longest
 from pathlib import Path
 
 try:
@@ -102,10 +103,22 @@ class RssSource(Source):
     def fetch(self) -> list[Item]:
         urls = self.config.get("urls") or ([self.config["url"]] if "url" in self.config else [])
         limit = int(self.config.get("limit", 20))
-        items = fetch_each(
-            urls, lambda url: self._parse(self._load(url), url), label=net._redact_url
-        )
-        return items[:limit] if limit else items
+        if not limit:
+            return fetch_each(
+                urls, lambda url: self._parse(self._load(url), url), label=net._redact_url
+            )
+        # ``limit`` is a total cap, but it must not let the first feed(s) fill it:
+        # cap each feed to its share, then interleave round-robin before trimming.
+        per_feed = max(1, -(-limit // max(1, len(urls))))
+        by_feed: list[list[Item]] = []
+
+        def load(url: str) -> list[Item]:
+            by_feed.append(self._parse(self._load(url), url)[:per_feed])
+            return []
+
+        fetch_each(urls, load, label=net._redact_url)
+        merged = [it for row in zip_longest(*by_feed) for it in row if it is not None]
+        return merged[:limit]
 
     def _load(self, url: str) -> str:
         if url.startswith(("http://", "https://")):
@@ -114,7 +127,7 @@ class RssSource(Source):
                 timeout=float(self.config.get("timeout", net.DEFAULT_TIMEOUT)),
                 retries=int(self.config.get("retries", net.DEFAULT_RETRIES)),
             )
-            resp.raise_for_status()
+            net.raise_for_status(resp)
             return resp.text
         return Path(url).read_text(encoding="utf-8")
 

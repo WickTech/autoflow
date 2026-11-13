@@ -90,3 +90,20 @@ def test_one_broken_feed_does_not_sink_the_others(tmp_path, caplog):
 def test_all_feeds_failing_still_fails_the_run(tmp_path):
     with pytest.raises(OSError):
         RssSource(urls=[str(tmp_path / "a.xml"), str(tmp_path / "b.xml")]).fetch()
+
+
+def _feed(prefix: str, n: int) -> str:
+    items = "".join(
+        f"<item><title>{prefix}{i}</title><link>https://x/{prefix}{i}</link></item>"
+        for i in range(n)
+    )
+    return f'<?xml version="1.0"?><rss version="2.0"><channel>{items}</channel></rss>'
+
+
+def test_limit_does_not_starve_later_feeds(tmp_path):
+    a, b = tmp_path / "a.xml", tmp_path / "b.xml"
+    a.write_text(_feed("a", 10), encoding="utf-8")
+    b.write_text(_feed("b", 10), encoding="utf-8")
+    items = RssSource(urls=[str(a), str(b)], limit=4).fetch()
+    titles = [i.title for i in items]
+    assert titles == ["a0", "b0", "a1", "b1"]
