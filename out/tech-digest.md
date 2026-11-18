@@ -1,9 +1,9 @@
-# AI Tech Digest — 2026-11-17
+# AI Tech Digest — 2026-11-18
 
-## [What is the best harness for each model?](https://runta.com/blog/introducing-frontierharness-eval-v1-1/)
+## [Microsoft AI: Seven new world-class models at scalable price-performance](https://microsoft.ai/news/microsoft-ignite-2026/)
 
 <sub>source: https://hnrss.org/frontpage</sub>
 
-## [Baidu, Xiaomi CEOs warn of growing gap between AI hype and returns](https://www.scmp.com/tech/big-tech/article/3374774/baidu-xiaomi-ceos-warn-growing-gap-between-ai-hype-and-returns)
+## [Google's AI answers reducing search traffic by 40%](https://revscope.co/blog/search-seo-geo-2026/)
 
 <sub>source: https://hnrss.org/frontpage</sub>
