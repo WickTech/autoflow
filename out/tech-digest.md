@@ -1,23 +1,13 @@
-# AI Tech Digest — 2026-11-19
+# AI Tech Digest — 2026-11-20
 
-## [Launch HN: Onlook (YC W25) – An open-source developer tool for designers](https://github.com/onlook-dev/onlook/)
-
-Onlook is a desktop app that puts a canvas on top of your real codebase, letting you design directly in code with the agent you already use. When we built this editor, we had an epiphany that it could be a new kind of IDE for design.
+## [Anthropic employee claims general proof of the Riemann Hypothesis [pdf]](https://alpo.ge/remark.pdf)
 
 <sub>source: https://hnrss.org/frontpage</sub>
 
-## [Why AI Wants to Be Local – With Pete Warden (Creator of Moonshine Voice)](https://thedataexchange.media/pete-warden-moonshine/)
+## [Global stock markets slump as Anthropic's record IPO fails to stem AI sell-off](https://www.theguardian.com/business/2026/nov/20/global-stock-markets-slump-anthropic-ipo-ai-sell-off)
 
 <sub>source: https://hnrss.org/frontpage</sub>
 
-## [Show HN: Watch weight-space programming in action with WebGPU](https://tabbyml.github.io/weight-space-playground/)
-
-I wanted to build a full weight-space programming loop entirely in the browser with WebGPU: let an LLM inspect Qwen3.5-0.8B, edit its weights, evaluate, and repeat. the full loop needed too much VRAM.
-
-<sub>source: https://hnrss.org/frontpage</sub>
-
-## [Show HN: Foolscap – a writing app that reads your book and never writes for you](https://foolscap.works/)
-
-You can respond to what it picks out, so there's a dialectic between the system and you as the writer. There's a free tier, and if you email hello@foolscap.works I'll send you a code for 50% off.
+## [Frostbite: A new CPU architecture discovered, designed and verified by AI](https://architectlabs.com/blog/frostbite)
 
 <sub>source: https://hnrss.org/frontpage</sub>
