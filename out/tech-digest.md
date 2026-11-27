@@ -1,11 +1,17 @@
-# AI Tech Digest — 2026-11-26
+# AI Tech Digest — 2026-11-27
 
-## [Tracking Diseases Cured by AI](https://diseasescuredbyai.com/)
+## [Show HN: bouncemarket – a live prediction market game for a bouncing ball](https://bouncemarket.minhanhday.com/)
+
+a ball will fall. Every drop is deterministic from its starting position, so rounds can be replayed exactly for later analysis, but tiny variations in starting position can change the ultimate outcome.
 
 <sub>source: https://hnrss.org/frontpage</sub>
 
-## [The New York Times warns photographers not to update Photoshop over AI features](https://www.theverge.com/ai-artificial-intelligence/1041227/the-new-york-times-warns-photographers-not-to-update-photoshop-over-ai-features)
+## [AI on brink of making online security useless, mathematicians fear](https://www.thetimes.com/uk/technology-uk/article/ai-making-online-security-useless-smr73d3n8)
 
-https://archive.ph/pcUgy
+https://archive.ph/4hRp8
+
+<sub>source: https://hnrss.org/frontpage</sub>
+
+## [Group chat where your AI talks behind your back](https://construct22.com/)
 
 <sub>source: https://hnrss.org/frontpage</sub>
